@@ -41,12 +41,12 @@ install:
 
 .PHONY: distclean
 distclean:
-	@rm -f $(UNIMDETECTORMAP_LIB)
-	@rm -f $(UNIMapperSrc)lib$(UNIMDETECTORMAP_LIB)
+	@rm -f $(UNIMDETECTORMAP_LIB) $(OBJS)
+	@rm -f $(UNIMapperSrc)lib/$(UNIMDETECTORMAP_LIB)
 
 .PHONY: clean
 clean:
-	@$(RM) -f $(LIB) $(OBJS)
+	@$(RM) -f $(UNIMDETECTORMAP_LIB) $(OBJS)
 	@$(RM) -f *.expand
 
 .PHONY: lint

@@ -42,12 +42,12 @@ install:
 
 .PHONY: distclean
 distclean:
-	@rm -f $(UNIMRAWDATAREADER_LIB)
-	@rm -f $(UNIMapperSrc)lib$(UNIMRAWDATAREADER_LIB)
+	@rm -f $(UNIMRAWDATAREADER_LIB) $(OBJS)
+	@rm -f $(UNIMapperSrc)lib/$(UNIMRAWDATAREADER_LIB)
 
 .PHONY: clean
 clean:
-	@$(RM) -f $(LIB) $(OBJS)
+	@$(RM) -f $(UNIMRAWDATAREADER_LIB) $(OBJS)
 	@$(RM) -f *.expand
 
 .PHONY: lint

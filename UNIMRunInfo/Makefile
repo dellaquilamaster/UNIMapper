@@ -40,12 +40,12 @@ install:
 
 .PHONY: distclean
 distclean:
-	@rm -f $(UNIMRUNINFO_LIB)
-	@rm -f $(UNIMapperSrc)lib$(UNIMRUNINFO_LIB)
+	@rm -f $(UNIMRUNINFO_LIB) $(OBJS)
+	@rm -f $(UNIMapperSrc)lib/$(UNIMRUNINFO_LIB)
 
 .PHONY: clean
 clean:
-	@$(RM) -f $(LIB) $(OBJS)
+	@$(RM) -f $(UNIMRUNINFO_LIB) $(OBJS)
 	@$(RM) -f *.expand
 
 .PHONY: lint

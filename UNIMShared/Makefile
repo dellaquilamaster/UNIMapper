@@ -41,12 +41,12 @@ install:
 
 .PHONY: distclean
 distclean:
-	@rm -f $(UNIMSHARED_LIB)
-	@rm -f $(UNIMapperSrc)lib$(UNIMSHARED_LIB)
+	@rm -f $(UNIMSHARED_LIB) $(OBJS)
+	@rm -f $(UNIMapperSrc)lib/$(UNIMSHARED_LIB)
 
 .PHONY: clean
 clean:
-	@$(RM) -f $(LIB) $(OBJS)
+	@$(RM) -f $(UNIMSHARED_LIB) $(OBJS)
 	@$(RM) -f *.expand
 
 .PHONY: lint

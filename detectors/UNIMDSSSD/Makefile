@@ -51,16 +51,16 @@ $(UNIMDSSSD_LIB): $(OBJS) $(UNIMDSSSD_DICTO)
 
 install:
 	@echo "cp $(UNIMDSSSD_LIB) $(UNIMDSSSD_PCM) $(UNIMapperSrc)lib/."
-	@cp $(UNIMDSSSD_LIB) $(UNIMapperSrc)lib/.
+	@cp $(UNIMDSSSD_LIB) $(UNIMDSSSD_PCM) $(UNIMapperSrc)lib/.
 
 .PHONY: distclean
 distclean:
-	@rm -f $(UNIMDSSSD_LIB) $(UNIMDSSSD_DICT) $(UNIMDSSSD_DICTH) $(UNIMDSSSD_PCM)
-	@rm -f $(UNIMapperSrc)lib$(UNIMDSSSD_LIB)
+	@rm -f $(UNIMDSSSD_LIB) $(UNIMDSSSD_DICT) $(UNIMDSSSD_DICTH) $(UNIMDSSSD_PCM) $(OBJS)
+	@rm -f $(UNIMapperSrc)lib/$(UNIMDSSSD_LIB) $(UNIMapperSrc)lib/$(UNIMDSSSD_PCM) $(OBJS)
 
 .PHONY: clean
 clean:
-	@$(RM) -f $(LIB) $(OBJS)
+	@$(RM) -f $(UNIMDSSSD_LIB) $(UNIMDSSSD_DICT) $(UNIMDSSSD_DICTH) $(UNIMDSSSD_PCM) $(OBJS)
 	@$(RM) -f *.expand
 
 .PHONY: lint

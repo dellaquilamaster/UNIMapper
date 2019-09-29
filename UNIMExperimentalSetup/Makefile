@@ -41,12 +41,12 @@ install:
 
 .PHONY: distclean
 distclean:
-	@rm -f $(UNIMEXPERIMENTALSETUP_LIB)
-	@rm -f $(UNIMapperSrc)lib$(UNIMEXPERIMENTALSETUP_LIB)
+	@rm -f $(UNIMEXPERIMENTALSETUP_LIB) $(OBJS)
+	@rm -f $(UNIMapperSrc)lib/$(UNIMEXPERIMENTALSETUP_LIB)
 
 .PHONY: clean
 clean:
-	@$(RM) -f $(LIB) $(OBJS)
+	@$(RM) -f $(UNIMEXPERIMENTALSETUP_LIB) $(OBJS)
 	@$(RM) -f *.expand
 
 .PHONY: lint
