@@ -11,7 +11,10 @@ DAQ_fampl  (*fTheReader,"DAQ.fampl")
 
 //________________________________________________
 UNIMMidasModule::~UNIMMidasModule()
-{}
+{
+  printf("distruggo il midas module\n");
+  printf("finito di distruggere il midas module\n");
+}
 
 //________________________________________________
 Int_t UNIMMidasModule::GetMulti()

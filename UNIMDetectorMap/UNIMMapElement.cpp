@@ -1,6 +1,17 @@
 #include <UNIMMapElement.h>
 
 //________________________________________________
+UNIMMapElement::UNIMMapElement()
+{}
+
+//________________________________________________
+UNIMMapElement::~UNIMMapElement()
+{
+  printf("distruggo la map element\n");
+  printf("finito di distruggere la map element\n");
+}
+
+//________________________________________________
 void UNIMMapElement::SetDetector(UNIMDetector * NewDetector)
 {
   fTheDetector=NewDetector;

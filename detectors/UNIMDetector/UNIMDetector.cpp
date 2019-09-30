@@ -8,7 +8,10 @@ fNumDetectors(num_detectors)
 
 //________________________________________________
 UNIMDetector::~UNIMDetector()
-{}
+{
+  printf("distruggo il detector\n");
+  printf("finito di distruggere il detector\n");
+}
 
 //________________________________________________
 void UNIMDetector::Clear()

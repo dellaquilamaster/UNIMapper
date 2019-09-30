@@ -7,6 +7,9 @@
 class UNIMMapElement
 {
 public :
+  UNIMMapElement();
+  ~UNIMMapElement();
+  
   void SetDetector(UNIMDetector *);
   void SetUnit(int);
   void SetQuantity(const char *);

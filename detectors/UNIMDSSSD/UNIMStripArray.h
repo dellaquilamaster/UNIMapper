@@ -14,23 +14,19 @@ public :
   void Init();
   void Clear();
   
-  void SetQuantity(const char *, int numstrip, Short_t value);
-  void SetEnergyFrontCal(int numstrip, double value);
-  void SetEnergyBackCal(int numstrip, double value);
+  void SetEnergy(int numstrip, Short_t);
+  void SetTime(int numstrip, Short_t);
+  void SetEnergyCal(int numstrip, double);
   
-  Short_t GetQuantity(const char *, int numstrip) const;
-
-  Short_t GetEnergyFront(int numstrip) const;
-  Short_t GetEnergyBack(int numstrip) const;
-  double GetEnergyFrontCal(int numstrip) const;
-  double GetEnergyBackCal(int numstrip) const;
-  Short_t GetTimeFront(int numstrip) const;
-  Short_t GetTimeBack(int numstrip) const;
+  Short_t GetEnergy(int numstrip) const;
+  Short_t GetTime(int numstrip) const;
+  double GetEnergyCal(int numstrip) const;
   
 private :
   int fNumStrips;
-  std::map<std::string, Short_t> * fQuantities;
-  std::map<std::string, double> * fQuantitiesCal;
+  Short_t * fEnergy;
+  Short_t * fTime;
+  double * fEnergyCal;
 };
 
 #endif

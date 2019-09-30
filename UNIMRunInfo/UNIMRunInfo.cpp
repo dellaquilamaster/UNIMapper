@@ -7,7 +7,10 @@ fRunNumber(run_number)
 
 //________________________________________________
 UNIMRunInfo::~UNIMRunInfo()
-{}
+{
+  printf("distruggo il runinfo\n");
+  printf("finito di distruggere il runinfo\n");
+}
 
 //________________________________________________
 int UNIMRunInfo::InitClass(const char *file_name)

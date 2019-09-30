@@ -19,7 +19,7 @@ INCLUDES  += -I$(UNIMapperSrc)UNIMDetectorMap
 INCLUDES  += -I$(UNIMapperSrc)UNIMCalibration
 INCLUDES  += -I$(UNIMapperSrc)UNIMShared
 
-RLIBS     := -L$(UNIMapperSrc)lib -lUNIMRawDataReader -lUNIMDetector -lUNIMDSSSD -lUNIMRunInfo -lUNIMDetectorMap -lUNIMExperimentalSetup -lUNIMShared
+RLIBS     := -L$(UNIMapperSrc)lib -lUNIMRawDataReader -lUNIMDetector -lUNIMDSSSD -lUNIMSSSSD -lUNIMLampWedge -lUNIMRunInfo -lUNIMDetectorMap -lUNIMExperimentalSetup -lUNIMShared
 
 SRCS = $(wildcard *.$(SrcSuf))
 OBJS = $(patsubst %.$(SrcSuf), %.$(ObjSuf), $(SRCS))

@@ -12,7 +12,7 @@ public:
   Short_t  *fTimeFront;      //[fmultif]
   double   *fEnergyFrontCal; //[fmultif]
   Int_t    fmultib;
-  Int_t    *fnumstripb;       //[fmultif]
+  Int_t    *fnumstripb;       //[fmultib]
   Short_t  *fEnergyBack;     //[fmultib]
   Short_t  *fTimeBack;       //[fmultib]
   double   *fEnergyBackCal;  //[fmultib]

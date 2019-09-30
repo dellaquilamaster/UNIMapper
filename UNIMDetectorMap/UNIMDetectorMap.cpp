@@ -6,7 +6,10 @@ UNIMDetectorMap::UNIMDetectorMap()
 
 //________________________________________________
 UNIMDetectorMap::~UNIMDetectorMap()
-{}
+{
+  printf("distruggo il detector mappa\n");
+  printf("finito di distruggere il detector mappa\n");
+}
 
 //________________________________________________
 void UNIMDetectorMap::SetDetectors(std::map<std::string, UNIMDetector *> * TheDetectors)
@@ -65,6 +68,7 @@ int UNIMDetectorMap::ParseMapLine(const char * line_to_parse)
   int ModuleChannel=std::stoi(ModuleChannelString);
   
   //Creating the new map element
+  if((*fTheDetectors).find(DetectorName.c_str())==(*fTheDetectors).end()) return 0; // if this is true the detector DetectorName does not exist
   UNIMMapElement * NewMap = new UNIMMapElement();
   NewMap->SetDetector((*fTheDetectors)[DetectorName.c_str()]);
   NewMap->SetUnit(DetectionUnitNumber);

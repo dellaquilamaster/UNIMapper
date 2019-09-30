@@ -3,98 +3,61 @@
 //________________________________________________
 UNIMStripArray::UNIMStripArray(int numstrips) :
 fNumStrips(numstrips),
-fQuantities(new std::map<std::string, Short_t>[fNumStrips])
+fEnergy(new Short_t[fNumStrips]),
+fTime(new Short_t[fNumStrips]),
+fEnergyCal(new double[fNumStrips])
 {}
 
 //________________________________________________
 UNIMStripArray::~UNIMStripArray()
 {
-  delete [] fQuantities;
-}
-
-//________________________________________________
-void UNIMStripArray::Init()
-{
-  for(int i=0; i<fNumStrips; i++) {
-    (fQuantities[i])[std::string("ENERGYFRONT")]=-9999;
-    (fQuantities[i])[std::string("ENERGYBACK")]=-9999;
-    (fQuantities[i])[std::string("TIMEFRONT")]=-9999;
-    (fQuantities[i])[std::string("TIMEBACK")]=-9999;
-    (fQuantitiesCal[i])[std::string("ENERGYFRONTCAL")]=-9999;
-    (fQuantitiesCal[i])[std::string("ENERGYBACKCAL")]=-9999;
-  }
+  delete [] fEnergy;
+  delete [] fTime;
+  delete [] fEnergyCal;
 }
 
 //________________________________________________
 void UNIMStripArray::Clear()
 {
   for(int i=0; i<fNumStrips; i++) {
-    for(std::map<std::string, Short_t>::iterator it; it!=fQuantities[i].end(); it++) {
-      it->second=-9999;
-    }
-    for(std::map<std::string, double>::iterator it; it!=fQuantitiesCal[i].end(); it++) {
-      it->second=-9999;
-    }
+    fEnergy[i]=-9999;
+    fTime[i]=-9999;
+    fEnergyCal[i]=-9999;
   }
 }
 
 //________________________________________________
-void UNIMStripArray::SetQuantity(const char * quantity, int numstrip, Short_t value)
+void UNIMStripArray::SetEnergy(int numstrip, Short_t value)
 {
-  (fQuantities[numstrip])[quantity]=value;
+  fEnergy[numstrip]=value;
 }
 
 //________________________________________________
-void UNIMStripArray::SetEnergyFrontCal(int numstrip, double value)
+void UNIMStripArray::SetTime(int numstrip, Short_t value)
 {
-  (fQuantitiesCal[numstrip])[std::string("ENERGYFRONTCAL")]=value;
+  fTime[numstrip]=value;
 }
 
 //________________________________________________
-void UNIMStripArray::SetEnergyBackCal(int numstrip, double value)
+void UNIMStripArray::SetEnergyCal(int numstrip, double value)
 {
-  (fQuantitiesCal[numstrip])[std::string("ENERGYBACKCAL")]=value;
+  fEnergyCal[numstrip]=value;
 }
 
 //________________________________________________
-Short_t UNIMStripArray::GetQuantity(const char * quantity, int numstrip) const
+Short_t UNIMStripArray::GetEnergy(int numstrip) const
 {
-  return (fQuantities[numstrip])[quantity];
+  return fEnergy[numstrip];
 }
 
 //________________________________________________
-Short_t UNIMStripArray::GetEnergyFront(int numstrip) const
+Short_t UNIMStripArray::GetTime(int numstrip) const
 {
-  return (fQuantities[numstrip])["ENERGYFRONT"];
+  return fTime[numstrip];
 }
 
 //________________________________________________
-Short_t UNIMStripArray::GetEnergyBack(int numstrip) const
+double UNIMStripArray::GetEnergyCal(int numstrip) const
 {
-  return (fQuantities[numstrip])["ENERGYBACK"];
+  return fEnergyCal[numstrip];
 }
-
-//________________________________________________
-double UNIMStripArray::GetEnergyFrontCal(int numstrip) const
-{
-  return (fQuantitiesCal[numstrip])["ENERGYFRONTCAL"];
-}
-
-//________________________________________________
-double UNIMStripArray::GetEnergyBackCal(int numstrip) const
-{
-  return (fQuantitiesCal[numstrip])["ENERGYBACKCAL"];
-}
-
-//________________________________________________
-Short_t UNIMStripArray::GetTimeFront(int numstrip) const
-{
-  return (fQuantities[numstrip])["TIMEFRONT"];
-}
-
-//________________________________________________
-Short_t UNIMStripArray::GetTimeBack(int numstrip) const
-{
-  return (fQuantities[numstrip])["TIMEBACK"];
-}
-

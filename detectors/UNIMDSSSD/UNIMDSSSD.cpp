@@ -3,7 +3,8 @@
 //________________________________________________
 UNIMDSSSD::UNIMDSSSD(const char * name, int num_detectors) : 
 UNIMDetector(name, num_detectors),
-fDSSSD(new UNIMStripArray(fNumDetectors)),
+fDSSSDFront(new UNIMStripArray(fNumDetectors)),
+fDSSSDBack(new UNIMStripArray(fNumDetectors)),
 fevt(new UNIMDSSSDRootEvent(fNumDetectors))
 {
   fType.assign("UNIMDSSSD");
@@ -12,14 +13,18 @@ fevt(new UNIMDSSSDRootEvent(fNumDetectors))
 //________________________________________________
 UNIMDSSSD::~UNIMDSSSD()
 {
-  if(fDSSSD) delete fDSSSD;
+  printf("distruggo il DSSSD\n");
+  if(fDSSSDFront) delete fDSSSDFront;
+  if(fDSSSDBack) delete fDSSSDBack;
   if(fevt) delete fevt;
+  printf("finito di distruggere il DSSSD\n");
 }
 
 //________________________________________________
 void UNIMDSSSD::Clear()
 {
-  fDSSSD->Clear();
+  fDSSSDFront->Clear();
+  fDSSSDBack->Clear();
 }
 
 //________________________________________________
@@ -32,7 +37,16 @@ void UNIMDSSSD::InitTTreeBranch(TTree * theTree)
 //________________________________________________
 void UNIMDSSSD::SetQuantity(const char * quantity, int det_unit, Short_t value)
 {
-  fDSSSD->SetQuantity(quantity, det_unit, value);
+  if(strcmp(quantity,"ENERGYFRONT")==0) {
+    fDSSSDFront->SetEnergy(det_unit, value);
+  } else if (strcmp(quantity,"ENERGYBACK")==0) {
+    fDSSSDBack->SetEnergy(det_unit, value);    
+  } else if (strcmp(quantity,"TIMEFRONT")==0) {
+    fDSSSDFront->SetTime(det_unit, value);    
+  } else if (strcmp(quantity,"TIMEBACK")==0) {
+    fDSSSDBack->SetTime(det_unit, value);    
+  }
+  
 }
 
 //________________________________________________
@@ -54,24 +68,24 @@ void UNIMDSSSD::FillMappedData()
   //Fill front strips
   fevt->fDSSSD.fmultif=0;
   for(int NumStrip=0; NumStrip<fNumDetectors; NumStrip++) {
-    if(fDSSSD->GetEnergyFront(NumStrip)>0)
+    if(fDSSSDFront->GetEnergy(NumStrip)>0)
     {
       fevt->fDSSSD.fnumstripf[fevt->fDSSSD.fmultif]=NumStrip;
-      fevt->fDSSSD.fEnergyFront[fevt->fDSSSD.fmultif]=fDSSSD->GetEnergyFront(NumStrip);
-      fevt->fDSSSD.fEnergyFrontCal[fevt->fDSSSD.fmultif]=fDSSSD->GetEnergyFrontCal(NumStrip);
-      fevt->fDSSSD.fTimeFront[fevt->fDSSSD.fmultif]=fDSSSD->GetTimeFront(NumStrip);
+      fevt->fDSSSD.fEnergyFront[fevt->fDSSSD.fmultif]=fDSSSDFront->GetEnergy(NumStrip);
+      fevt->fDSSSD.fEnergyFrontCal[fevt->fDSSSD.fmultif]=fDSSSDFront->GetEnergyCal(NumStrip);
+      fevt->fDSSSD.fTimeFront[fevt->fDSSSD.fmultif]=fDSSSDFront->GetTime(NumStrip);
       fevt->fDSSSD.fmultif++;
     }
   }
   //Fill back strips
   fevt->fDSSSD.fmultib=0;
   for(int NumStrip=0; NumStrip<fNumDetectors; NumStrip++) {
-    if(fDSSSD->GetEnergyBack(NumStrip)>0)
+    if(fDSSSDBack->GetEnergy(NumStrip)>0)
     {
       fevt->fDSSSD.fnumstripf[fevt->fDSSSD.fmultib]=NumStrip;
-      fevt->fDSSSD.fEnergyBack[fevt->fDSSSD.fmultib]=fDSSSD->GetEnergyBack(NumStrip);
-      fevt->fDSSSD.fEnergyBackCal[fevt->fDSSSD.fmultib]=fDSSSD->GetEnergyBackCal(NumStrip);
-      fevt->fDSSSD.fTimeBack[fevt->fDSSSD.fmultib]=fDSSSD->GetTimeBack(NumStrip);
+      fevt->fDSSSD.fEnergyBack[fevt->fDSSSD.fmultib]=fDSSSDBack->GetEnergy(NumStrip);
+      fevt->fDSSSD.fEnergyBackCal[fevt->fDSSSD.fmultib]=fDSSSDBack->GetEnergyCal(NumStrip);
+      fevt->fDSSSD.fTimeBack[fevt->fDSSSD.fmultib]=fDSSSDBack->GetTime(NumStrip);
       fevt->fDSSSD.fmultib++;
     }
   }

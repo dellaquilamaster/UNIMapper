@@ -3,6 +3,7 @@ CFLAGS    :=`root-config --cflags --libs`
 DllSuf    := so
 SrcSuf    := cpp
 ObjSuf    := o
+PcmSuf    := _rdict.pcm
 
 INCLUDES  := -I$(UNIMapperSrc)
 INCLUDES  += -I$(UNIMapperSrc)UNIMRawDataReader
@@ -20,34 +21,47 @@ RLIBS     := -L$(UNIMapperSrc)lib
 
 CXXFLAGS  += $(INCLUDES) -std=c++11 -fPIC -O3 -Wall -Wpedantic
 
-UNIMEXPERIMENTALSETUP_LIB := libUNIMExperimentalSetup.$(DllSuf)
+UNIMSSSSD_LIB := libUNIMSSSSD.$(DllSuf)
 SRCS = $(wildcard *.$(SrcSuf))
 OBJS = $(patsubst %.$(SrcSuf), %.$(ObjSuf), $(SRCS))
+
+UNIMSSSSD_DICT  := UNIMSSSSDDict.$(SrcSuf)
+UNIMSSSSD_DICTH := $(UNIMSSSSD_DICT:.$(SrcSuf)=.h)
+UNIMSSSSD_DICTO := $(UNIMSSSSD_DICT:.$(SrcSuf)=.$(ObjSuf))
+UNIMSSSSD_PCM   := UNIMSSSSDDict$(PcmSuf)
+
+UNIMSSSSD_HDRS  := $(wildcard UNIM*.$(SrcSuf))
+UNIMSSSSD_HDRS  := $(UNIMSSSSD_HDRS:.$(SrcSuf)=.h) UNIMSSSSDLinkDef.h
+UNIMSSSSD_HDRS  := $(filter-out $(UNIMSSSSD_DICTH),$(UNIMSSSSD_HDRS))
 
 .$(SrcSuf).$(ObjSuf):
 	@$(CXX) $(CXXFLAGS) -c $< $(SYSLIB) $(CFLAGS)
 	@echo "$(CXX) $(CXXFLAGS) -c $< $(SYSLIB) $(CFLAGS)"
 
-all: $(UNIMEXPERIMENTALSETUP_LIB)
+all: $(UNIMSSSSD_LIB)
 
-.SUFFIXES: .$(SrcSuf) .$(ObjSuf) .$(DllSuf)
+.SUFFIXES: .$(SrcSuf) .$(ObjSuf) .$(DllSuf) .$(PcmSuf)
 
-$(UNIMEXPERIMENTALSETUP_LIB): $(OBJS)
+$(UNIMSSSSD_DICT): $(UNIMSSSSD_HDRS)
+	@echo "Generating dictionary $@..."
+	rootcling -f $@ -p $(INCLUDES) $^
+
+$(UNIMSSSSD_LIB): $(OBJS) $(UNIMSSSSD_DICTO)
 	@$(CXX) $(CXXFLAGS) -shared -o $@ $^ $(CFLAGS) $(RLIBS)
 	@echo "$(CXX) $(CXXFLAGS) -shared -o $@ $^ $(CFLAGS) $(RLIBS)"
 
 install:
-	@echo "cp $(UNIMEXPERIMENTALSETUP_LIB) $(UNIMapperSrc)lib/."
-	@cp $(UNIMEXPERIMENTALSETUP_LIB) $(UNIMapperSrc)lib/.
+	@echo "cp $(UNIMSSSSD_LIB) $(UNIMSSSSD_PCM) $(UNIMapperSrc)lib/."
+	@cp $(UNIMSSSSD_LIB) $(UNIMSSSSD_PCM) $(UNIMapperSrc)lib/.
 
 .PHONY: distclean
 distclean:
-	@rm -f $(UNIMEXPERIMENTALSETUP_LIB) $(OBJS)
-	@rm -f $(UNIMapperSrc)lib/$(UNIMEXPERIMENTALSETUP_LIB)
+	@rm -f $(UNIMSSSSD_LIB) $(UNIMSSSSD_DICT) $(UNIMSSSSD_DICTH) $(UNIMSSSSD_PCM) $(OBJS)
+	@rm -f $(UNIMapperSrc)lib/$(UNIMSSSSD_LIB) $(UNIMapperSrc)lib/$(UNIMSSSSD_PCM) $(OBJS)
 
 .PHONY: clean
 clean:
-	@$(RM) -f $(UNIMEXPERIMENTALSETUP_LIB) $(OBJS)
+	@$(RM) -f $(UNIMSSSSD_LIB) $(UNIMSSSSD_DICT) $(UNIMSSSSD_DICTH) $(UNIMSSSSD_PCM) $(OBJS)
 	@$(RM) -f *.expand
 
 .PHONY: lint

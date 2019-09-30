@@ -15,8 +15,10 @@ fTimeElapsed(0)
 //________________________________________________
 UNIMRawDataReader::~UNIMRawDataReader()
 {
+  printf("distruggo la data reader\n");
   if(fTheEvent) delete fTheEvent;
   if(fDataReader) delete fDataReader;
+  printf("finito di distruggere la data reader\n");
 }
 
 //________________________________________________

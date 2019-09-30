@@ -10,7 +10,7 @@
 #include <sstream>
 #include <UNIMDetector.h>
 #include <UNIMDSSSD.h>
-#include <UNIMDSSSD.h>
+#include <UNIMSSSSD.h>
 #include <UNIMLampWedge.h>
 #include <UNIMDetectorMap.h>
 #include <UNIMRunInfo.h>

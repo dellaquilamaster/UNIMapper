@@ -4,17 +4,16 @@
 /* *******************************************************************************************************
  * UNIMDSSSD Class
  * v1.0 27/09/2019
- * class to store DSSSD data is derived
+ * class to store Double-Sided Silicon Strip Detector (DSSSD) data
  * implemented by Daniele Dell'Aquila (daniele.dellaquila@irb.hr)
  * Simple version containing only the raw data of a DSSSD of arbitrary number of strips.
  * The class is composed by:
- * 1 UNIMStripArray
+ * 1 UNIMStripArray for strip front
+ * 1 UNIMStripArray for strip back
  *
  *
- * class UNIMStripArray : it is an organization of 
- * quantities -> value in memory
- * 
- * Quantities can be: 
+ * class UNIMStripArray : it is an organization of data.
+ * This data is associated by the UNIMDSSSD class to certain quantitites that can be:
  * ENERGYFRONT
  * ENERGYBACK
  * TIMEFRONT
@@ -44,7 +43,8 @@ public :
   void FillMappedData() override;                        //!Stores mapped data in detector ROOT class to be written on the output tree
 
 private :
-  UNIMStripArray *fDSSSD;                                //!UNIMStripArray containing mapped event-by-event data
+  UNIMStripArray *fDSSSDFront;                           //!UNIMStripArray containing mapped event-by-event data for the strip front
+  UNIMStripArray *fDSSSDBack;                            //!UNIMStripArray containing mapped event-by-event data for the strip back
   UNIMDSSSDRootEvent * fevt;                             //!RootEvent type of the detector
 
 };

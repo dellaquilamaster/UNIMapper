@@ -9,7 +9,10 @@ fRunNumber(-1)
 
 //________________________________________________
 UNIMMapper::~UNIMMapper()
-{}
+{
+  printf("distruggo il mapper\n");
+  printf("finito di distruggere il mapper\n");
+}
 
 //________________________________________________
 int UNIMMapper::PassArguments(int argc, char** argv)

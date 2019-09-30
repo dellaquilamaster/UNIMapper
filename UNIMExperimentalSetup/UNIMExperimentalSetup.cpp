@@ -9,11 +9,15 @@ fDetectorMaps(new UNIMDetectorMap())
 //________________________________________________
 UNIMExperimentalSetup::~UNIMExperimentalSetup()
 {
+  printf("distruggo il setuppe\n");
+  
   for(std::map<std::string, UNIMDetector *>::iterator TheModule=fDetectors->begin(); TheModule!=fDetectors->end(); TheModule++) {
       delete (*TheModule).second;
   }
   delete fDetectors;
   delete fDetectorMaps;
+  
+  printf("finito di distrurre il setuppe\n");
 }
 
 //________________________________________________
@@ -69,13 +73,13 @@ int UNIMExperimentalSetup::ParseDefineMappingLine(const char * line_to_parse)
     } if(DetectorType.compare("SSSSD")==0) {
       int NumStrips;
       LineStream>>NumStrips;
-//       UNIMSSSD * newDetector = new UNIMSSSD(DetectorName.c_str(), NumStrips);
-//       (*fDetectors)[DetectorName]=newDetector;
+      UNIMSSSD * newDetector = new UNIMSSSD(DetectorName.c_str(), NumStrips);
+      (*fDetectors)[DetectorName]=newDetector;
     } if(DetectorType.compare("LampWedge")==0) {
       int NumStrips;
       LineStream>>NumStrips;
-//       UNIMLampWedge * newDetector = new UNIMLampWedge(DetectorName.c_str(), NumStrips);
-//       (*fDetectors)[DetectorName]=newDetector;
+      UNIMLampWedge * newDetector = new UNIMLampWedge(DetectorName.c_str(), NumStrips);
+      (*fDetectors)[DetectorName]=newDetector;
     }
   }
 
