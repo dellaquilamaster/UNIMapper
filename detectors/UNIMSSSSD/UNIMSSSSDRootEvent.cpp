@@ -13,12 +13,10 @@ fmulti(0)
 //________________________________________________
 UNIMSSSSDData::~UNIMSSSSDData()
 {
-  printf("distruggo il root data\n");
   delete [] fnumstrip;
   delete [] fEnergy;
   delete [] fTime;
   delete [] fEnergyCal;
-  printf("finito di distruggere il root data\n");
 }
 
 //________________________________________________
@@ -29,7 +27,4 @@ fSSSSD(fNumDetectors)
 
 //________________________________________________
 UNIMSSSSDRootEvent::~UNIMSSSSDRootEvent()
-{
-  printf("distruggo il root evento\n");
-  printf("finito di distruggere il root evento\n");
-}
+{}

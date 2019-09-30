@@ -19,7 +19,7 @@ public :
   const char * GetType() const;                          //!Returns detector type
   int GetNumDetectors() const;                           //!Get number of individual detection objects (e.g. strips)
   
-  virtual void SetQuantity(const char *, int, Short_t);  //!Individually implemented in specific detector classes 
+  virtual void SetQuantity(int, int, Short_t);           //!Individually implemented in specific detector classes 
 
   virtual void InitTTreeBranch(TTree *);                 //!Individually implemented in specific detector classes
   virtual void BuildEvent();                             //!Individually implemented in specific detector classes

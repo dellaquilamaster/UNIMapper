@@ -6,10 +6,7 @@ UNIMDetectorMap::UNIMDetectorMap()
 
 //________________________________________________
 UNIMDetectorMap::~UNIMDetectorMap()
-{
-  printf("distruggo il detector mappa\n");
-  printf("finito di distruggere il detector mappa\n");
-}
+{}
 
 //________________________________________________
 void UNIMDetectorMap::SetDetectors(std::map<std::string, UNIMDetector *> * TheDetectors)
@@ -82,7 +79,7 @@ int UNIMDetectorMap::ParseMapLine(const char * line_to_parse)
 //________________________________________________
 UNIMMapElement * UNIMDetectorMap::GetAssociation(int gid, int ch)
 {
-  return (IsMapped(gid,ch) ? ((*(fTheMapping[gid])))[ch] : 0);
+  return (IsMapped(gid,ch) ? (*(fTheMapping[gid]))[ch] : 0);
 }
 
 //________________________________________________

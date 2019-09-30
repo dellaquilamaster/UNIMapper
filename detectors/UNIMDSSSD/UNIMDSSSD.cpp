@@ -5,7 +5,11 @@ UNIMDSSSD::UNIMDSSSD(const char * name, int num_detectors) :
 UNIMDetector(name, num_detectors),
 fDSSSDFront(new UNIMStripArray(fNumDetectors)),
 fDSSSDBack(new UNIMStripArray(fNumDetectors)),
-fevt(new UNIMDSSSDRootEvent(fNumDetectors))
+fevt(new UNIMDSSSDRootEvent(fNumDetectors)),
+fEnergyFrontID(atoi("ENERGYFRONT")),
+fEnergyBackID(atoi("ENERGYBACK")),
+fTimeFrontID(atoi("TIMEFRONT")),
+fTimeBackID(atoi("TIMEBACK"))
 {
   fType.assign("UNIMDSSSD");
 }
@@ -13,11 +17,9 @@ fevt(new UNIMDSSSDRootEvent(fNumDetectors))
 //________________________________________________
 UNIMDSSSD::~UNIMDSSSD()
 {
-  printf("distruggo il DSSSD\n");
   if(fDSSSDFront) delete fDSSSDFront;
   if(fDSSSDBack) delete fDSSSDBack;
   if(fevt) delete fevt;
-  printf("finito di distruggere il DSSSD\n");
 }
 
 //________________________________________________
@@ -35,18 +37,17 @@ void UNIMDSSSD::InitTTreeBranch(TTree * theTree)
 }
 
 //________________________________________________
-void UNIMDSSSD::SetQuantity(const char * quantity, int det_unit, Short_t value)
+void UNIMDSSSD::SetQuantity(int quantity_code, int det_unit, Short_t value)
 {
-  if(strcmp(quantity,"ENERGYFRONT")==0) {
+  if (quantity_code==fEnergyFrontID) {
     fDSSSDFront->SetEnergy(det_unit, value);
-  } else if (strcmp(quantity,"ENERGYBACK")==0) {
-    fDSSSDBack->SetEnergy(det_unit, value);    
-  } else if (strcmp(quantity,"TIMEFRONT")==0) {
-    fDSSSDFront->SetTime(det_unit, value);    
-  } else if (strcmp(quantity,"TIMEBACK")==0) {
-    fDSSSDBack->SetTime(det_unit, value);    
+  } else if (quantity_code==fEnergyBackID) {
+    fDSSSDBack->SetEnergy(det_unit, value);  
+  } else if (quantity_code==fTimeFrontID) {
+    fDSSSDFront->SetTime(det_unit, value);
+  } else if (quantity_code==fTimeBackID) {
+    fDSSSDBack->SetTime(det_unit, value); 
   }
-  
 }
 
 //________________________________________________

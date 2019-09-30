@@ -7,12 +7,12 @@ class UNIMDSSSDData
 {
 public:
   Int_t    fmultif;
-  Int_t    *fnumstripf;       //[fmultif]
+  Int_t    *fnumstripf;      //[fmultif]
   Short_t  *fEnergyFront;    //[fmultif]
   Short_t  *fTimeFront;      //[fmultif]
   double   *fEnergyFrontCal; //[fmultif]
   Int_t    fmultib;
-  Int_t    *fnumstripb;       //[fmultib]
+  Int_t    *fnumstripb;      //[fmultib]
   Short_t  *fEnergyBack;     //[fmultib]
   Short_t  *fTimeBack;       //[fmultib]
   double   *fEnergyBackCal;  //[fmultib]

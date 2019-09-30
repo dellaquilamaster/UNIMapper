@@ -15,10 +15,8 @@ fTimeElapsed(0)
 //________________________________________________
 UNIMRawDataReader::~UNIMRawDataReader()
 {
-  printf("distruggo la data reader\n");
   if(fTheEvent) delete fTheEvent;
   if(fDataReader) delete fDataReader;
-  printf("finito di distruggere la data reader\n");
 }
 
 //________________________________________________
@@ -42,7 +40,7 @@ int UNIMRawDataReader::InitReader()
 int UNIMRawDataReader::InitRootInput()
 {
   // Opening a new TFile for input
-  fDataTree = new TChain(Form("%s",gRun->GetName()));
+  fDataTree = new TChain("Midas");
   fNEvtFiles = fDataTree->Add(Form("%sR%d_*.root", gRun->GetMidasROOTFilePath(), gRun->GetRunNumber()));
   fTotalEvents=fDataTree->GetEntries();
   return fNEvtFiles;
@@ -62,7 +60,7 @@ void UNIMRawDataReader::ProcessRawTree()
   while(fDataReader->Next())
   {
     //Display progress
-    if(fCurrEvent%1000==0) {
+    if(fCurrEvent%10000==0) {
       double time_elapsed = (double)(clock() - fStartTime)/CLOCKS_PER_SEC;
       std::cout << "  Percentage = " << std::fixed << std::setprecision(1) << std::setw(5) << (100*double(fCurrEvent)/fTotalEvents) << " %";
       std::cout << "   [";
@@ -84,6 +82,9 @@ void UNIMRawDataReader::ProcessRawTree()
 
     //Map all the detectors
     fDataMapper->MapDetectors(fTheEvent);
+    
+    //Calibrate Energy for all the detectors
+    
 
     //Fill the mapped tree entry
     fDataMapper->FillMappedEvent();

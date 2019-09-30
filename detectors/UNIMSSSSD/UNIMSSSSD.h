@@ -33,7 +33,7 @@ public :
 
   void Clear() override;                                 //!Clear to -9999
   
-  void SetQuantity(const char *, int, Short_t) override; //!Set a quantity to the detector data structure
+  void SetQuantity(int, int, Short_t) override;          //!Set a quantity to the detector data structure
 
   void InitTTreeBranch(TTree *) override;                //!Initialize TTree Branch containing detector ROOT type
   void BuildEvent() override;                            //!Organizes and calibrates data into the ROOTEvent object
@@ -42,6 +42,9 @@ public :
 private :
   UNIMStripArray *fSSSSD;                                //!UNIMStripArray containing mapped event-by-event data
   UNIMSSSSDRootEvent * fevt;                             //!RootEvent type of the detector
+  
+  const int fEnergyID;                                   //!Identifier of the ENERGY quantity, used for a fast mapping
+  const int fTimeID;                                     //!Identifier of the TIME quantity, used for a fast mapping
 
 };
 

@@ -6,10 +6,7 @@ UNIMMapElement::UNIMMapElement()
 
 //________________________________________________
 UNIMMapElement::~UNIMMapElement()
-{
-  printf("distruggo la map element\n");
-  printf("finito di distruggere la map element\n");
-}
+{}
 
 //________________________________________________
 void UNIMMapElement::SetDetector(UNIMDetector * NewDetector)
@@ -20,7 +17,7 @@ void UNIMMapElement::SetDetector(UNIMDetector * NewDetector)
 //________________________________________________
 void UNIMMapElement::SetQuantity(const char * TheQuantity)
 {
-  fTheQuantity.assign(TheQuantity);
+  fTheQuantity=(atoi(TheQuantity));
 }
 
 //________________________________________________
@@ -36,9 +33,9 @@ UNIMDetector * UNIMMapElement::GetDetector()
 }
 
 //________________________________________________
-const char * UNIMMapElement::GetQuantity()
+int UNIMMapElement::GetQuantity()
 {
-  return fTheQuantity.c_str();
+  return fTheQuantity;
 }
 
 //________________________________________________

@@ -1,6 +1,6 @@
 CFLAGS    :=`root-config --cflags --libs`
 
-PROG      :=exec_UNIMMapper.exe
+PROG      :=exec_UNIMapper.exe
 
 DllSuf    := so
 SrcSuf    := cpp

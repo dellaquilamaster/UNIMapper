@@ -4,7 +4,9 @@
 UNIMLampWedge::UNIMLampWedge(const char * name, int num_detectors) : 
 UNIMDetector(name, num_detectors),
 fLampWedge(new UNIMStripArray(fNumDetectors)),
-fevt(new UNIMLampWedgeRootEvent(fNumDetectors))
+fevt(new UNIMLampWedgeRootEvent(fNumDetectors)),
+fEnergyID(atoi("ENERGY")),
+fTimeID(atoi("TIME"))
 {
   fType.assign("UNIMLampWedge");
 }
@@ -12,10 +14,8 @@ fevt(new UNIMLampWedgeRootEvent(fNumDetectors))
 //________________________________________________
 UNIMLampWedge::~UNIMLampWedge()
 {
-  printf("distruggo il LampWedge\n");
   if(fLampWedge) delete fLampWedge;
   if(fevt) delete fevt;
-  printf("finito di distruggere il LampWedge\n");
 }
 
 //________________________________________________
@@ -32,12 +32,12 @@ void UNIMLampWedge::InitTTreeBranch(TTree * theTree)
 }
 
 //________________________________________________
-void UNIMLampWedge::SetQuantity(const char * quantity, int det_unit, Short_t value)
+void UNIMLampWedge::SetQuantity(int quantity_code, int det_unit, Short_t value)
 {
-  if(strcmp(quantity,"ENERGY")==0) {
+  if (quantity_code==fEnergyID) {
     fLampWedge->SetEnergy(det_unit, value);
-  } else if (strcmp(quantity,"TIME")==0) {
-    fLampWedge->SetEnergy(det_unit, value);    
+  } else if (quantity_code==fTimeID) {
+    fLampWedge->SetTime(det_unit, value);
   }
 }
 

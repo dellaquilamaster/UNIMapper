@@ -9,10 +9,7 @@ fRunNumber(-1)
 
 //________________________________________________
 UNIMMapper::~UNIMMapper()
-{
-  printf("distruggo il mapper\n");
-  printf("finito di distruggere il mapper\n");
-}
+{}
 
 //________________________________________________
 int UNIMMapper::PassArguments(int argc, char** argv)
@@ -82,7 +79,7 @@ int UNIMMapper::InitRootOutput()
   if(fFileOut->IsZombie()) return -1; //failed to open TFile
 
   // Creating output TTree
-  fMappedTree = new TTree(Form("E%s",gRun->GetName()), gRun->GetTitle(),2);
+  fMappedTree = new TTree(Form("%s",gRun->GetName()), gRun->GetTitle(),2);
   fMappedTree->SetAutoSave(50000000);
 
   //call individual detectors InitTTreeBranch
@@ -105,6 +102,8 @@ void UNIMMapper::EndMapping()
   //Writing TTree to file and close file
   fMappedTree->AutoSave();
   fMappedTree->GetCurrentFile()->Close();
+  
+  printf("\nUNIMMapper: Produced ROOT file %s\n", Form("%srun-%04d.root", gRun->GetUNIMapperROOTFilePath(), fRunNumber));
 
   return;
 }
@@ -112,19 +111,32 @@ void UNIMMapper::EndMapping()
 //________________________________________________
 void UNIMMapper::MapDetectors(UNIMMidasModule * TheEvent)
 {
+  //List of defined detectors
+  std::map<std::string, UNIMDetector *> * DefinedDetectors = gExpSetup->GetDetectors();
+  
+  //Loop over the defined detectors to call their individual UNIMDetector::Clear() methods
+  for(std::map<std::string, UNIMDetector *>::iterator TheDetector=DefinedDetectors->begin(); TheDetector!=DefinedDetectors->end(); TheDetector++)
+  {
+    (TheDetector)->second->Clear();
+  }
+  
   //Loop over the event multiplicity to store data in specific detector channels
   for(int i=0; i<TheEvent->GetMulti(); i++) {
     UNIMMapElement * TheMapAssociation = gExpSetup->GetMapping()->GetAssociation(TheEvent->GetGid(i),TheEvent->GetCh(i));
+    if(TheMapAssociation==0) {
+      //Mapping is missing for this channel
+      printf("\nUNIMMapper> WARNING: Detector mapping missing for gid=%d ch=%d -> skipping this entry!\n", TheEvent->GetGid(i),TheEvent->GetCh(i));
+      continue; 
+    }
     TheMapAssociation->GetDetector()->SetQuantity(TheMapAssociation->GetQuantity(), TheMapAssociation->GetUnit(), TheEvent->GetAmpl(i));
   }
   
-  //Loop over the defined detectors to call their individual UNIMDetector::BuildEvent()
-  std::map<std::string, UNIMDetector *> * DefinedDetectors = gExpSetup->GetDetectors();
+  //Loop over the defined detectors to call their individual UNIMDetector::BuildEvent() methods
   for(std::map<std::string, UNIMDetector *>::iterator TheDetector=DefinedDetectors->begin(); TheDetector!=DefinedDetectors->end(); TheDetector++)
   {
     (TheDetector)->second->BuildEvent();
   }
-
+  
   return;
 }
 

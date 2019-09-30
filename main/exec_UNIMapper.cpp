@@ -27,9 +27,6 @@ int main (int argc, char ** argv)
     return -2;
   }
   printf("** Mapper correctly initialized **\n");
-  
-  printf("sto ritornando 0\n");
-  return 0;
 
   //Create UNIMRawDataReader object
   UNIMRawDataReader * TheReader = new UNIMRawDataReader();

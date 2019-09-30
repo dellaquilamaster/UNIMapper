@@ -4,7 +4,9 @@
 UNIMSSSSD::UNIMSSSSD(const char * name, int num_detectors) : 
 UNIMDetector(name, num_detectors),
 fSSSSD(new UNIMStripArray(fNumDetectors)),
-fevt(new UNIMSSSSDRootEvent(fNumDetectors))
+fevt(new UNIMSSSSDRootEvent(fNumDetectors)),
+fEnergyID(atoi("ENERGY")),
+fTimeID(atoi("TIME"))
 {
   fType.assign("UNIMSSSSD");
 }
@@ -12,10 +14,8 @@ fevt(new UNIMSSSSDRootEvent(fNumDetectors))
 //________________________________________________
 UNIMSSSSD::~UNIMSSSSD()
 {
-  printf("distruggo il SSSSD\n");
   if(fSSSSD) delete fSSSSD;
   if(fevt) delete fevt;
-  printf("finito di distruggere il SSSSD\n");
 }
 
 //________________________________________________
@@ -32,12 +32,12 @@ void UNIMSSSSD::InitTTreeBranch(TTree * theTree)
 }
 
 //________________________________________________
-void UNIMSSSSD::SetQuantity(const char * quantity, int det_unit, Short_t value)
+void UNIMSSSSD::SetQuantity(int quantity_code, int det_unit, Short_t value)
 {
-  if(strcmp(quantity,"ENERGY")==0) {
+  if (quantity_code==fEnergyID) {
     fSSSSD->SetEnergy(det_unit, value);
-  } else if (strcmp(quantity,"TIME")==0) {
-    fSSSSD->SetEnergy(det_unit, value);    
+  } else if (quantity_code==fTimeID) {
+    fSSSSD->SetTime(det_unit, value);
   }
 }
 

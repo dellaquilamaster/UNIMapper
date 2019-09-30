@@ -3,7 +3,7 @@
 
 #include <TTreeReader.h>
 #include <TTreeReaderValue.h>
-#include <TTreeReaderArray.h>
+#include <M2RMidasRootEvent.h>
 
 class UNIMMidasModule
 {
@@ -18,10 +18,7 @@ public :
 
 private :
   TTreeReader * fTheReader;
-  TTreeReaderValue<Int_t> DAQ_fmulti; 
-  TTreeReaderArray<Short_t> DAQ_fgid; 
-  TTreeReaderArray<Short_t> DAQ_fch;  
-  TTreeReaderArray<Short_t> DAQ_fampl;
+  TTreeReaderValue<M2RMidasRootEvent> DAQ;
 };
 
 #endif

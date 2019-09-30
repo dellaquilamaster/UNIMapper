@@ -8,10 +8,7 @@ fNumDetectors(num_detectors)
 
 //________________________________________________
 UNIMDetector::~UNIMDetector()
-{
-  printf("distruggo il detector\n");
-  printf("finito di distruggere il detector\n");
-}
+{}
 
 //________________________________________________
 void UNIMDetector::Clear()
@@ -38,7 +35,7 @@ int UNIMDetector::GetNumDetectors() const
 }
 
 //________________________________________________
-void UNIMDetector::SetQuantity(const char * quantity, int det_unit, Short_t value)
+void UNIMDetector::SetQuantity(int quantity_id, int det_unit, Short_t value)
 {
   return;
 }
