@@ -1,0 +1,13 @@
+** Energy calibrations for experiment 20Ne+4He at INFN-LNL (2016) **
+** Written by Daniele Dell'Aquila (daniele.dellaquila@irb.hr)
+**************************************************
+**** SHORT GUIDE
+* Indicate below the following information:
+* detector = name of the detector
+* quantity = quantity to calibrate (e.g. ENERGYFRONT, ENERGYBACK, ENERGY)
+* unit = individual detection unit to calibrate (e.g. number of strip)
+* calibration function formula with "." instead of "*"
+* number of parameters
+* the parameters
+**************************************************
+* detector        quantity        unit        formula       n_parameters        the_parameters.....

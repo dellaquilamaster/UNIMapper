@@ -4,7 +4,8 @@
 UNIMMapper::UNIMMapper() :
 fMappedTree(0),
 fFileOut(0),
-fRunNumber(-1)
+fRunNumber(-1),
+fEnergyCalibration(new UNIMCalibration())
 {}
 
 //________________________________________________
@@ -35,7 +36,14 @@ int UNIMMapper::InitializeMapper(const char * file_config_name)
 
   //Building Experimental Setup
   if(BuildExperimentalSetup()!=0) return -1;
-
+  
+  //Initializing Calibrations
+  if(fEnergyCalibration->LoadCalibration(gRun->GetEnergyCalibrationFile())<=0) {
+    printf("UNIMMapper> WARNING: Failed to load calibrations from file %s, skipping calibrations!\n", gRun->GetEnergyCalibrationFile());
+  } else {
+    printf("UNIMMapper: Energy calibrations sucessfully loaded from file %s\n", gRun->GetEnergyCalibrationFile());
+  }
+  
   //Initializing output TFile and TTree
   if(InitRootOutput()!=0) return -2;
 
@@ -128,13 +136,13 @@ void UNIMMapper::MapDetectors(UNIMMidasModule * TheEvent)
       printf("\nUNIMMapper> WARNING: Detector mapping missing for gid=%d ch=%d -> skipping this entry!\n", TheEvent->GetGid(i),TheEvent->GetCh(i));
       continue; 
     }
-    TheMapAssociation->GetDetector()->SetQuantity(TheMapAssociation->GetQuantity(), TheMapAssociation->GetUnit(), TheEvent->GetAmpl(i));
+    TheMapAssociation->GetDetector()->SetQuantity(TheMapAssociation->GetQuantity(), TheMapAssociation->GetUnit(), TheEvent->GetAmpl(i));    
   }
   
   //Loop over the defined detectors to call their individual UNIMDetector::BuildEvent() methods
   for(std::map<std::string, UNIMDetector *>::iterator TheDetector=DefinedDetectors->begin(); TheDetector!=DefinedDetectors->end(); TheDetector++)
   {
-    (TheDetector)->second->BuildEvent();
+    (TheDetector)->second->BuildEvent(fEnergyCalibration);
   }
   
   return;

@@ -21,9 +21,12 @@
 #include <TROOT.h>
 #include <TTree.h>
 #include <math.h>
+#include <string>
+#include <functional>
 #include <UNIMSSSSDRootEvent.h>
 #include <UNIMStripArray.h>
 #include <UNIMDetector.h>
+#include <UNIMCalibrationElement.h>
 
 class UNIMSSSSD : public UNIMDetector
 {
@@ -33,18 +36,21 @@ public :
 
   void Clear() override;                                 //!Clear to -9999
   
-  void SetQuantity(int, int, Short_t) override;          //!Set a quantity to the detector data structure
+  void SetQuantity(unsigned long, int, Short_t) override;//!Set a quantity to the detector data structure
 
   void InitTTreeBranch(TTree *) override;                //!Initialize TTree Branch containing detector ROOT type
-  void BuildEvent() override;                            //!Organizes and calibrates data into the ROOTEvent object
+  void BuildEvent() override;                            //!Organizes data into the ROOTEvent object
+  void BuildEvent(UNIMCalibration*) override;            //!Organizes and calibrates data into the ROOTEvent object
   void FillMappedData() override;                        //!Stores mapped data in detector ROOT class to be written on the output tree
+  
+  void BuildCalibratedQuantities(UNIMCalibration*) override; //!Executes energy calibrations
 
 private :
   UNIMStripArray *fSSSSD;                                //!UNIMStripArray containing mapped event-by-event data
   UNIMSSSSDRootEvent * fevt;                             //!RootEvent type of the detector
   
-  const int fEnergyID;                                   //!Identifier of the ENERGY quantity, used for a fast mapping
-  const int fTimeID;                                     //!Identifier of the TIME quantity, used for a fast mapping
+  const unsigned long fEnergyID;                         //!Identifier of the ENERGY quantity, used for a fast mapping
+  const unsigned long fTimeID;                           //!Identifier of the TIME quantity, used for a fast mapping
 
 };
 

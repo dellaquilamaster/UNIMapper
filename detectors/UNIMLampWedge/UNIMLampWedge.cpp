@@ -32,7 +32,7 @@ void UNIMLampWedge::InitTTreeBranch(TTree * theTree)
 }
 
 //________________________________________________
-void UNIMLampWedge::SetQuantity(int quantity_code, int det_unit, Short_t value)
+void UNIMLampWedge::SetQuantity(unsigned long quantity_code, int det_unit, Short_t value)
 {
   if (quantity_code==fEnergyID) {
     fLampWedge->SetEnergy(det_unit, value);
@@ -44,13 +44,35 @@ void UNIMLampWedge::SetQuantity(int quantity_code, int det_unit, Short_t value)
 //________________________________________________
 void UNIMLampWedge::BuildEvent()
 {
+  //Fill Root Event structure to be written on the tree
+  FillMappedData();
+
+  return;
+}
+
+//________________________________________________
+void UNIMLampWedge::BuildEvent(UNIMCalibration* TheCalibrations)
+{
   //Launch calibrations
-  //TO BE IMPLEMENTED  
+  if(TheCalibrations->IsPresent()) BuildCalibratedQuantities(TheCalibrations);
 
   //Fill Root Event structure to be written on the tree
   FillMappedData();
 
   return;
+}
+
+//________________________________________________
+void UNIMLampWedge::BuildCalibratedQuantities(UNIMCalibration* TheCalibrations)
+{
+  //Loop on strips
+  for(int NumStrip=0; NumStrip<fNumDetectors; NumStrip++) {
+    if(fLampWedge->GetEnergy(NumStrip)>0)
+    {
+      UNIMCalibrationElement * TheCalibration = TheCalibrations->GetCalibration(GetName(),fEnergyID,NumStrip);
+      if(TheCalibration) fLampWedge->SetEnergyCal(NumStrip, TheCalibration->GetCalibrated(fLampWedge->GetEnergy(NumStrip)));
+    }
+  }
 }
 
 //________________________________________________

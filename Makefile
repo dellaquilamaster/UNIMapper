@@ -13,6 +13,7 @@ root:
 	$(MAKE) -C detectors/UNIMSSSSD ;	$(MAKE) -C detectors/UNIMSSSSD install
 	$(MAKE) -C detectors/UNIMLampWedge ;	$(MAKE) -C detectors/UNIMLampWedge install
 	$(MAKE) -C UNIMDetectorMap ;		$(MAKE) -C UNIMDetectorMap install
+	$(MAKE) -C UNIMCalibration ;		$(MAKE) -C UNIMCalibration install
 	$(MAKE) -C UNIMShared ;			$(MAKE) -C UNIMShared install
 
 install:
@@ -24,6 +25,7 @@ install:
 	$(MAKE) -C detectors/UNIMSSSSD install
 	$(MAKE) -C detectors/UNIMLampWedge install
 	$(MAKE) -C UNIMDetectorMap install
+	$(MAKE) -C UNIMCalibration install
 	$(MAKE) -C UNIMShared install
 
 distclean:
@@ -35,6 +37,7 @@ distclean:
 	$(MAKE) -C detectors/UNIMSSSSD distclean
 	$(MAKE) -C detectors/UNIMLampWedge distclean
 	$(MAKE) -C UNIMDetectorMap distclean
+	$(MAKE) -C UNIMCalibration distclean
 	$(MAKE) -C UNIMShared distclean
 	
 	$(MAKE) -C main distclean
@@ -48,6 +51,7 @@ clean:
 	$(MAKE) -C detectors/UNIMSSSSD clean
 	$(MAKE) -C detectors/UNIMLampWedge clean
 	$(MAKE) -C UNIMDetectorMap clean
+	$(MAKE) -C UNIMCalibration clean
 	$(MAKE) -C UNIMShared clean
 
 	$(MAKE) -C main clean

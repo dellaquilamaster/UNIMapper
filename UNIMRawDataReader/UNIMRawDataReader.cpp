@@ -82,9 +82,6 @@ void UNIMRawDataReader::ProcessRawTree()
 
     //Map all the detectors
     fDataMapper->MapDetectors(fTheEvent);
-    
-    //Calibrate Energy for all the detectors
-    
 
     //Fill the mapped tree entry
     fDataMapper->FillMappedEvent();

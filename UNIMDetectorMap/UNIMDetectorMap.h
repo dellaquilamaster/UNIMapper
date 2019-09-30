@@ -9,6 +9,7 @@
 #include <vector>
 #include <map>
 #include <string>
+#include <functional>
 #include <UNIMMapElement.h>
 #include <UNIMDetector.h>
 #include <UNIMShared.h>

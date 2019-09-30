@@ -17,7 +17,7 @@ void UNIMMapElement::SetDetector(UNIMDetector * NewDetector)
 //________________________________________________
 void UNIMMapElement::SetQuantity(const char * TheQuantity)
 {
-  fTheQuantity=(atoi(TheQuantity));
+  fTheQuantity=std::hash<std::string>()(TheQuantity);
 }
 
 //________________________________________________
@@ -33,7 +33,7 @@ UNIMDetector * UNIMMapElement::GetDetector()
 }
 
 //________________________________________________
-int UNIMMapElement::GetQuantity()
+unsigned long UNIMMapElement::GetQuantity()
 {
   return fTheQuantity;
 }

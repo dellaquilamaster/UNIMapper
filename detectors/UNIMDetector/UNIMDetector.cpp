@@ -35,7 +35,7 @@ int UNIMDetector::GetNumDetectors() const
 }
 
 //________________________________________________
-void UNIMDetector::SetQuantity(int quantity_id, int det_unit, Short_t value)
+void UNIMDetector::SetQuantity(unsigned long quantity_id, int det_unit, Short_t value)
 {
   return;
 }
@@ -53,7 +53,19 @@ void UNIMDetector::BuildEvent()
 }
 
 //________________________________________________
+void UNIMDetector::BuildEvent(UNIMCalibration*)
+{
+  return;
+}
+
+//________________________________________________
 void UNIMDetector::FillMappedData()
+{
+  return;
+}
+
+//________________________________________________
+void UNIMDetector::BuildCalibratedQuantities(UNIMCalibration * TheCalibrations)
 {
   return;
 }

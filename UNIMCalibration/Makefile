@@ -1,17 +1,13 @@
 CFLAGS    :=`root-config --cflags --libs`
 
-PROG      :=exec_UNIMapper.exe
-
 DllSuf    := so
 SrcSuf    := cpp
 ObjSuf    := o
 
 INCLUDES  := -I$(UNIMapperSrc)
-INCLUDES  += -I$(UNIMapperSrc)main
 INCLUDES  += -I$(UNIMapperSrc)UNIMRawDataReader
 INCLUDES  += -I$(UNIMapperSrc)detectors/UNIMDetector
 INCLUDES  += -I$(UNIMapperSrc)detectors/UNIMDSSSD
-INCLUDES  += -I$(UNIMapperSrc)detectors/UNIMSSSSD
 INCLUDES  += -I$(UNIMapperSrc)detectors/UNIMLampWedge
 INCLUDES  += -I$(UNIMapperSrc)UNIMRunInfo
 INCLUDES  += -I$(UNIMapperSrc)UNIMExperimentalSetup
@@ -19,37 +15,39 @@ INCLUDES  += -I$(UNIMapperSrc)UNIMDetectorMap
 INCLUDES  += -I$(UNIMapperSrc)UNIMCalibration
 INCLUDES  += -I$(UNIMapperSrc)UNIMShared
 
-RLIBS     := -L$(UNIMapperSrc)lib -lUNIMRawDataReader -lUNIMDetector -lUNIMDSSSD -lUNIMSSSSD -lUNIMLampWedge -lUNIMRunInfo -lUNIMDetectorMap -lUNIMExperimentalSetup -lUNIMCalibration -lUNIMShared
-
-SRCS = $(wildcard *.$(SrcSuf))
-OBJS = $(patsubst %.$(SrcSuf), %.$(ObjSuf), $(SRCS))
+RLIBS     := -L$(UNIMapperSrc)lib
 
 CXXFLAGS  += $(INCLUDES) -std=c++11 -fPIC -O3 -Wall -Wpedantic
+
+UNIMCALIBRATION_LIB := libUNIMCalibration.$(DllSuf)
+SRCS = $(wildcard *.$(SrcSuf))
+OBJS = $(patsubst %.$(SrcSuf), %.$(ObjSuf), $(SRCS))
 
 .$(SrcSuf).$(ObjSuf):
 	@$(CXX) $(CXXFLAGS) -c $< $(SYSLIB) $(CFLAGS)
 	@echo "$(CXX) $(CXXFLAGS) -c $< $(SYSLIB) $(CFLAGS)"
 
-.PHONEY : all build
+all: $(UNIMCALIBRATION_LIB)
+
 .SUFFIXES: .$(SrcSuf) .$(ObjSuf) .$(DllSuf)
 
-all : build
-
-build : $(PROG)
-
-$(PROG) : $(OBJS)
-	$(CXX) $(CXXFLAGS) $(OBJS) -o $@ $(CFLAGS) $(RLIBS)
+$(UNIMCALIBRATION_LIB): $(OBJS)
+	@$(CXX) $(CXXFLAGS) -shared -o $@ $^ $(CFLAGS) $(RLIBS)
+	@echo "$(CXX) $(CXXFLAGS) -shared -o $@ $^ $(CFLAGS) $(RLIBS)"
 
 install:
-	@cp $(PROG) $(UNIMapperSrc)/$(PROG)
-
-.PHONY: clean
-clean :
-	rm -f $(OBJS) $(PROG)
+	@echo "cp $(UNIMCALIBRATION_LIB) $(UNIMapperSrc)lib/."
+	@cp $(UNIMCALIBRATION_LIB) $(UNIMapperSrc)lib/.
 
 .PHONY: distclean
-distclean: clean
-	@rm -f $(UNIMapperSrc)/$(PROG)
+distclean:
+	@rm -f $(UNIMCALIBRATION_LIB) $(OBJS)
+	@rm -f $(UNIMapperSrc)lib/$(UNIMCALIBRATION_LIB)
+
+.PHONY: clean
+clean:
+	@$(RM) -f $(UNIMCALIBRATION_LIB) $(OBJS)
+	@$(RM) -f *.expand
 
 .PHONY: lint
 lint:

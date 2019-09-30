@@ -27,12 +27,12 @@ public :
   
   UNIMDetector * GetDetector();
   int GetUnit();
-  int GetQuantity();
+  unsigned long GetQuantity();
   
 private :
   UNIMDetector * fTheDetector;
   int fTheUnit;
-  int fTheQuantity;
+  unsigned long fTheQuantity;
 };
 
 #endif
