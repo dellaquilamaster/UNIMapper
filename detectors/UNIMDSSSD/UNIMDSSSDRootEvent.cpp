@@ -16,6 +16,21 @@ fmultib(0)
 }
 
 //________________________________________________
+UNIMDSSSDData::UNIMDSSSDData() :
+fmultif(0),
+fmultib(0)
+{
+  fnumstripf=new Int_t[16];    
+  fEnergyFront=new Short_t[16];    
+  fTimeFront=new Short_t[16];      
+  fEnergyFrontCal=new double[16]; 
+  fnumstripb=new Int_t[16];    
+  fEnergyBack=new Short_t[16];    
+  fTimeBack=new Short_t[16];      
+  fEnergyBackCal=new double[16]; 
+}
+
+//________________________________________________
 UNIMDSSSDData::~UNIMDSSSDData()
 {
   delete [] fnumstripf;

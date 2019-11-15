@@ -13,6 +13,7 @@ public:
   double   *fEnergyCal;      //[fmulti]
 
   UNIMSSSSDData(int);
+  UNIMSSSSDData();
   virtual ~UNIMSSSSDData();
 
   ClassDef(UNIMSSSSDData,1);

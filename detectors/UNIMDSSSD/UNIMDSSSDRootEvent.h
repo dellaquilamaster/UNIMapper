@@ -18,6 +18,7 @@ public:
   double   *fEnergyBackCal;  //[fmultib]
 
   UNIMDSSSDData(int);
+  UNIMDSSSDData();
   virtual ~UNIMDSSSDData();
 
   ClassDef(UNIMDSSSDData,1);

@@ -61,17 +61,17 @@ void UNIMRawDataReader::ProcessRawTree()
   {
     //Display progress
     if(fCurrEvent%10000==0) {
-      double time_elapsed = (double)(clock() - fStartTime)/CLOCKS_PER_SEC;
+      fTimeElapsed = (double)(clock() - fStartTime)/CLOCKS_PER_SEC;
       std::cout << "  Percentage = " << std::fixed << std::setprecision(1) << std::setw(5) << (100*double(fCurrEvent)/fTotalEvents) << " %";
       std::cout << "   [";
       int printindex=0;
       for(; printindex<int(100*double(fCurrEvent)/fTotalEvents); printindex+=5) std::cout << "=";
       for(; printindex<100; printindex+=5) std::cout << " ";
       std::cout << "]   " << "elapsed time " << std::setprecision(1) <<
-      (time_elapsed<60 ? time_elapsed : (time_elapsed<3600 ? time_elapsed/60 : time_elapsed/3600)) <<
-      (time_elapsed<60 ? " s; " : (time_elapsed<3600 ? " m; " : " h; "));
+      (fTimeElapsed<60 ? fTimeElapsed : (fTimeElapsed<3600 ? fTimeElapsed/60 : fTimeElapsed/3600)) <<
+      (fTimeElapsed<60 ? " s; " : (fTimeElapsed<3600 ? " m; " : " h; "));
       if(fCurrEvent>0) {
-        double time_remaining = (time_elapsed/fCurrEvent)*(fTotalEvents-fCurrEvent);
+        double time_remaining = (fTimeElapsed/fCurrEvent)*(fTotalEvents-fCurrEvent);
         std::cout << " estimated remaining time " << std::setprecision(1) <<
         (time_remaining<60 ? time_remaining : (time_remaining<3600 ? time_remaining/60 : time_remaining/3600)) <<
         (time_remaining<60 ? " s      " : (time_remaining<3600 ? " m      " : " h      "));

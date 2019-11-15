@@ -11,6 +11,16 @@ fmulti(0)
 }
 
 //________________________________________________
+UNIMSSSSDData::UNIMSSSSDData() :
+fmulti(0)
+{
+  fnumstrip=new Int_t[16];    
+  fEnergy=new Short_t[16];    
+  fTime=new Short_t[16];      
+  fEnergyCal=new double[16]; 
+}
+
+//________________________________________________
 UNIMSSSSDData::~UNIMSSSSDData()
 {
   delete [] fnumstrip;
