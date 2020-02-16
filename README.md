@@ -65,7 +65,6 @@ config/UNIMapper.conf
 ````
 In the special language used to read the file, the character '\*' is used to provide a comment.  
 Following a detailed list of the general fields to configure:
-* set UNIMAPPER_DIR : this is the path to the main directory of the program without the last "/". This is a mandatory field before to export the environment variables
 * set UNIMAPPER_SUMMARY_PATH : not used in the current version of the program
 * set UNIMAPPER_ROOT_FILE_PATH : the output files are stored in this folder
 * set EXPERIMENT_NAME : this is the name of the experiment without spaces. This name is also used as the name of the output TTree
