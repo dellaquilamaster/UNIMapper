@@ -41,7 +41,7 @@ int UNIMRawDataReader::InitRootInput()
 {
   // Opening a new TFile for input
   fDataTree = new TChain("Midas");
-  fNEvtFiles = fDataTree->Add(Form("%sR%d_*.root", gRun->GetMidasROOTFilePath(), gRun->GetRunNumber()));
+  fNEvtFiles = fDataTree->Add(Form("%srun_%04d_*.root", gRun->GetMidasROOTFilePath(), gRun->GetRunNumber()));
   fTotalEvents=fDataTree->GetEntries();
   return fNEvtFiles;
 }
