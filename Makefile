@@ -11,6 +11,8 @@ root:
 	$(MAKE) -C detectors/UNIMDSSSD ;	$(MAKE) -C detectors/UNIMDSSSD install
 	$(MAKE) -C detectors/UNIMSSSSD ;	$(MAKE) -C detectors/UNIMSSSSD install
 	$(MAKE) -C detectors/UNIMLampWedge ;	$(MAKE) -C detectors/UNIMLampWedge install
+	$(MAKE) -C detectors/UNIMSiliconPad ;	$(MAKE) -C detectors/UNIMSiliconPad install
+	$(MAKE) -C detectors/UNIMSpare ;	$(MAKE) -C detectors/UNIMSpare install
 	$(MAKE) -C UNIMExperimentalSetup ;	$(MAKE) -C UNIMExperimentalSetup install
 	$(MAKE) -C UNIMDetectorMap ;		$(MAKE) -C UNIMDetectorMap install
 	$(MAKE) -C UNIMCalibration ;		$(MAKE) -C UNIMCalibration install
@@ -23,6 +25,8 @@ install:
 	$(MAKE) -C detectors/UNIMDSSSD install
 	$(MAKE) -C detectors/UNIMSSSSD install
 	$(MAKE) -C detectors/UNIMLampWedge install
+	$(MAKE) -C detectors/UNIMSiliconPad install
+	$(MAKE) -C detectors/UNIMSpare install
 	$(MAKE) -C UNIMExperimentalSetup install
 	$(MAKE) -C UNIMDetectorMap install
 	$(MAKE) -C UNIMCalibration install
@@ -35,6 +39,8 @@ distclean:
 	$(MAKE) -C detectors/UNIMDSSSD distclean
 	$(MAKE) -C detectors/UNIMSSSSD distclean
 	$(MAKE) -C detectors/UNIMLampWedge distclean
+	$(MAKE) -C detectors/UNIMSiliconPad distclean
+	$(MAKE) -C detectors/UNIMSpare distclean
 	$(MAKE) -C UNIMExperimentalSetup distclean
 	$(MAKE) -C UNIMDetectorMap distclean
 	$(MAKE) -C UNIMCalibration distclean
@@ -49,6 +55,8 @@ clean:
 	$(MAKE) -C detectors/UNIMDSSSD clean
 	$(MAKE) -C detectors/UNIMSSSSD clean
 	$(MAKE) -C detectors/UNIMLampWedge clean
+	$(MAKE) -C detectors/UNIMSiliconPad clean
+	$(MAKE) -C detectors/UNIMSpare clean
 	$(MAKE) -C UNIMExperimentalSetup clean
 	$(MAKE) -C UNIMDetectorMap clean
 	$(MAKE) -C UNIMCalibration clean

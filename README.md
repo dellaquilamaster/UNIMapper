@@ -101,6 +101,7 @@ Possible values for <DetType> and options are:
 * DSSSD : Double-Sided Silicon Strip Detectors -> options : number_of_strips  
 * SSSSD : Single-Sided Silicon Strip Detectors -> options : number_of_strips  
 * LampWedge : Lamp Wedge -> options : number_of_strips  
+* Spare : Some spare channels (arbitrary quantities) -> options : names of all quantities separated by space    
 "name" is the name associated to the detector, that will be used to name the corresponding data structure. This has to be inserted with the quotes.
 To map a single detector channel to a given pair (gid, channel) use the command:  
 ````
@@ -111,6 +112,8 @@ Possible values of <ChName> depend on the detector according to the following li
 * DSSSD : ENERGYFRONT ENERGYBACK TIMEFRONT TIMEBACK  
 * SSSSD : ENERGY TIME  
 * LampWedge : ENERGY TIME  
+* SiliconPad : ENERGY TIME  ("SingleDetName" here is always 0)  
+* Spare : QUANTITY1 QUANTITY2 ... QUANTITYN ("SingleDetName" here is always 0)  
 ### Energy Calibration File
 Energy calibrations for each individual detection unit are specified by a .ene file. In this fine, each line specifies the calibration of a certain quantity of a certain detector according to the following scheme:  
 ````

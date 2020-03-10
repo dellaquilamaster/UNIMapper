@@ -133,7 +133,7 @@ void UNIMMapper::MapDetectors(UNIMMidasModule * TheEvent)
     UNIMMapElement * TheMapAssociation = gExpSetup->GetMapping()->GetAssociation(TheEvent->GetGid(i),TheEvent->GetCh(i));
     if(TheMapAssociation==0) {
       //Mapping is missing for this channel
-      printf("\nUNIMMapper> WARNING: Detector mapping missing for gid=%d ch=%d -> skipping this entry!\n", TheEvent->GetGid(i),TheEvent->GetCh(i));
+      if(gRun->GetEmptyMappingWarning()) printf("\nUNIMMapper> WARNING: Detector mapping missing for gid=%d ch=%d -> skipping this entry!\n", TheEvent->GetGid(i),TheEvent->GetCh(i));
       continue; 
     }
     TheMapAssociation->GetDetector()->SetQuantity(TheMapAssociation->GetQuantity(), TheMapAssociation->GetUnit(), TheEvent->GetAmpl(i));    

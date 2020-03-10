@@ -30,7 +30,7 @@ public :
   int LoadCalibration(const char *);
   bool IsPresent() const;
   
-  UNIMCalibrationElement * GetCalibration(const char * det, unsigned long quantity_id, int unit);
+  UNIMCalibrationElement * GetCalibration(const char * det, unsigned long quantity_id, int unit=0);
   
 private :
   bool fIsLoaded;

@@ -3,24 +3,19 @@ CFLAGS    :=`root-config --cflags --libs`
 DllSuf    := so
 SrcSuf    := cpp
 ObjSuf    := o
+PcmSuf    := _rdict.pcm
 
 INCLUDES  := -I$(UNIMapperSrc)
-INCLUDES  += -I$(UNIMapperSrc)UNIMRawDataReader
 INCLUDES  += -I$(UNIMapperSrc)detectors/UNIMDetector
-INCLUDES  += -I$(UNIMapperSrc)detectors/UNIMDSSSD
-INCLUDES  += -I$(UNIMapperSrc)detectors/UNIMLampWedge
-INCLUDES  += -I$(UNIMapperSrc)detectors/UNIMSiliconPad
-INCLUDES  += -I$(UNIMapperSrc)UNIMRunInfo
-INCLUDES  += -I$(UNIMapperSrc)UNIMExperimentalSetup
-INCLUDES  += -I$(UNIMapperSrc)UNIMDetectorMap
+INCLUDES  += -I$(UNIMapperSrc)detectors/UNIMSpare
 INCLUDES  += -I$(UNIMapperSrc)UNIMCalibration
 INCLUDES  += -I$(UNIMapperSrc)UNIMShared
 
-RLIBS     := -L$(UNIMapperSrc)lib
+RLIBS     := -L$(UNIMapperSrc)lib -lUNIMDetector
 
 CXXFLAGS  += $(INCLUDES) -std=c++11 -fPIC -O3 -Wall -Wpedantic
 
-UNIMDETECTORMAP_LIB := libUNIMDetectorMap.$(DllSuf)
+UNIMSPARE_LIB := libUNIMSpare.$(DllSuf)
 SRCS = $(wildcard *.$(SrcSuf))
 OBJS = $(patsubst %.$(SrcSuf), %.$(ObjSuf), $(SRCS))
 
@@ -28,26 +23,26 @@ OBJS = $(patsubst %.$(SrcSuf), %.$(ObjSuf), $(SRCS))
 	@$(CXX) $(CXXFLAGS) -c $< $(SYSLIB) $(CFLAGS)
 	@echo "$(CXX) $(CXXFLAGS) -c $< $(SYSLIB) $(CFLAGS)"
 
-all: $(UNIMDETECTORMAP_LIB)
+all: $(UNIMSPARE_LIB)
 
-.SUFFIXES: .$(SrcSuf) .$(ObjSuf) .$(DllSuf)
+.SUFFIXES: .$(SrcSuf) .$(ObjSuf) .$(DllSuf) .$(PcmSuf)
 
-$(UNIMDETECTORMAP_LIB): $(OBJS)
+$(UNIMSPARE_LIB): $(OBJS)
 	@$(CXX) $(CXXFLAGS) -shared -o $@ $^ $(CFLAGS) $(RLIBS)
 	@echo "$(CXX) $(CXXFLAGS) -shared -o $@ $^ $(CFLAGS) $(RLIBS)"
 
 install:
-	@echo "cp $(UNIMDETECTORMAP_LIB) $(UNIMapperSrc)lib/."
-	@cp $(UNIMDETECTORMAP_LIB) $(UNIMapperSrc)lib/.
+	@echo "cp $(UNIMSPARE_LIB) $(UNIMapperSrc)lib/."
+	@cp $(UNIMSPARE_LIB) $(UNIMapperSrc)lib/.
 
 .PHONY: distclean
 distclean:
-	@rm -f $(UNIMDETECTORMAP_LIB) $(OBJS)
-	@rm -f $(UNIMapperSrc)lib/$(UNIMDETECTORMAP_LIB)
+	@rm -f $(UNIMSPARE_LIB) $(OBJS)
+	@rm -f $(UNIMapperSrc)lib/$(UNIMSPARE_LIB) $(OBJS)
 
 .PHONY: clean
 clean:
-	@$(RM) -f $(UNIMDETECTORMAP_LIB) $(OBJS)
+	@$(RM) -f $(UNIMSPARE_LIB) $(OBJS)
 	@$(RM) -f *.expand
 
 .PHONY: lint

@@ -12,6 +12,8 @@
 #include <UNIMDSSSD.h>
 #include <UNIMSSSSD.h>
 #include <UNIMLampWedge.h>
+#include <UNIMSiliconPad.h>
+#include <UNIMSpare.h>
 #include <UNIMDetectorMap.h>
 #include <UNIMRunInfo.h>
 #include <UNIMShared.h>

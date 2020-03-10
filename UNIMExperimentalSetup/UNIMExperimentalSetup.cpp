@@ -76,6 +76,18 @@ int UNIMExperimentalSetup::ParseDefineMappingLine(const char * line_to_parse)
       LineStream>>NumStrips;
       UNIMLampWedge * newDetector = new UNIMLampWedge(DetectorName.c_str(), NumStrips);
       (*fDetectors)[DetectorName]=newDetector;
+    } if(DetectorType.compare("SiliconPad")==0) {
+      UNIMSiliconPad * newDetector = new UNIMSiliconPad(DetectorName.c_str());
+      (*fDetectors)[DetectorName]=newDetector;
+    }  if(DetectorType.compare("Spare")==0) {
+      UNIMSpare * newDetector = new UNIMSpare(DetectorName.c_str());
+      std::string quantity_to_define;
+      while(LineStream>>quantity_to_define) {
+        if(!quantity_to_define.empty()) {
+          newDetector->DefineQuantity(quantity_to_define.c_str()); 
+        }
+      }
+      (*fDetectors)[DetectorName]=newDetector;
     }
   }
 

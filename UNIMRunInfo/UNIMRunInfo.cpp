@@ -2,7 +2,8 @@
 
 //________________________________________________
 UNIMRunInfo::UNIMRunInfo(int run_number) :
-fRunNumber(run_number)
+fRunNumber(run_number),
+fEmptyMappingWarning(true)
 {}
 
 //________________________________________________
@@ -120,6 +121,11 @@ const char * UNIMRunInfo::GetUNIMapperROOTFilePath() const
   return fUNIMapperRootFilePath.c_str();  
 }          
 
+bool UNIMRunInfo::GetEmptyMappingWarning() const
+{
+  return fEmptyMappingWarning;  
+}          
+
 //________________________________________________
 void UNIMRunInfo::ParseSetConfigLine(const char *line_to_parse)
 {
@@ -143,6 +149,10 @@ void UNIMRunInfo::ParseSetConfigLine(const char *line_to_parse)
     }
   } else if (ValueToSet.compare("UNIMAPPER_ROOT_FILE_PATH")==0) {
     fUNIMapperRootFilePath.assign(NewValue);
+  } else if (ValueToSet.compare("EMPTY_MAPPING_WARNING")==0) {
+    std::string TheOption;
+    LineStream>>TheOption;
+    fEmptyMappingWarning=(TheOption.compare("true")==0 ? true : false);
   }
 
   return;
