@@ -27,7 +27,7 @@ if ! [[ $run_num =~ $re ]] ; then
 fi
 
 if [ ! -z "$3" ]; then
-  echo "echo Mapping run $run_num... && eval './exec_UNIMapper.exe --run=$run_num'" >> parallel_runs.txt      
+  echo "Mapping run $run_num... && eval './exec_UNIMapper.exe --run=$run_num'" >> parallel_runs.txt      
 else 
   ./exec_UNIMapper.exe --run=$run_num
 fi
