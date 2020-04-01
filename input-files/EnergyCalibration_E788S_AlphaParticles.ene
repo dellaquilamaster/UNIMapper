@@ -63,7 +63,143 @@
                    B         ENERGYFRONT                  13           [0]+[1].x                   2            -2.79744            0.031392
                    B         ENERGYFRONT                  14           [0]+[1].x                   2            -3.41717           0.0329209
                    B         ENERGYFRONT                  15           [0]+[1].x                   2            -2.09037           0.0306769
+                   
+                   C          ENERGYBACK                   0           [0]+[1].x                   2            -1.43702           0.0304398
+                   C          ENERGYBACK                   1           [0]+[1].x                   2            -1.12746           0.0297131
+                   C          ENERGYBACK                   2           [0]+[1].x                   2            -1.24901           0.0299143
+                   C          ENERGYBACK                   3           [0]+[1].x                   2            -1.63967           0.0326615
+                   C          ENERGYBACK                   4           [0]+[1].x                   2            -2.19323           0.0301752
+                   C          ENERGYBACK                   5           [0]+[1].x                   2            -1.18431           0.0305132
+                   C          ENERGYBACK                   6           [0]+[1].x                   2            -1.70178           0.0297855
+                   C          ENERGYBACK                   7           [0]+[1].x                   2            -1.30053           0.0303438
+                   C          ENERGYBACK                   8           [0]+[1].x                   2            -1.30212           0.0302529
+                   C          ENERGYBACK                   9           [0]+[1].x                   2            -2.22692           0.0306082
+                   C          ENERGYBACK                  10           [0]+[1].x                   2            -2.18174            0.030132
+                   C          ENERGYBACK                  11           [0]+[1].x                   2            -2.01316           0.0301577
+                   C          ENERGYBACK                  12           [0]+[1].x                   2            -1.30853           0.0302541
+                   C          ENERGYBACK                  13           [0]+[1].x                   2            -1.89639           0.0299344
+                   C          ENERGYBACK                  14           [0]+[1].x                   2            -1.87585           0.0303944
+                   C          ENERGYBACK                  15           [0]+[1].x                   2            -1.52367           0.0312253
+                   C         ENERGYFRONT                   0           [0]+[1].x                   2            -1.91982           0.0288504
+                   C         ENERGYFRONT                   1           [0]+[1].x                   2            -2.17459           0.0291385
+                   C         ENERGYFRONT                   2           [0]+[1].x                   2            -2.66047            0.028472
+                   C         ENERGYFRONT                   3           [0]+[1].x                   2            -2.06859           0.0310815
+                   *missing STRIPF04
+                   C         ENERGYFRONT                   5           [0]+[1].x                   2            -3.07875            0.029512
+                   C         ENERGYFRONT                   6           [0]+[1].x                   2            -2.28961           0.0299263
+                   C         ENERGYFRONT                   7           [0]+[1].x                   2            -3.24457           0.0295199
+                   C         ENERGYFRONT                   8           [0]+[1].x                   2            -2.21474           0.0285971
+                   C         ENERGYFRONT                   9           [0]+[1].x                   2            -1.70386           0.0288439
+                   C         ENERGYFRONT                  10           [0]+[1].x                   2            -1.79075           0.0297897
+                   C         ENERGYFRONT                  11           [0]+[1].x                   2            -2.18469           0.0300344
+                   C         ENERGYFRONT                  12           [0]+[1].x                   2            -1.90951           0.0293505
+                   C         ENERGYFRONT                  13           [0]+[1].x                   2            -2.37938           0.0293887
+                   C         ENERGYFRONT                  14           [0]+[1].x                   2            -2.42426           0.0296889
+                   C         ENERGYFRONT                  15           [0]+[1].x                   2            -2.13352           0.0295601
+                   
+                   D          ENERGYBACK                   0           [0]+[1].x                   2            -1.89219           0.0310911
+                   D          ENERGYBACK                   1           [0]+[1].x                   2            -2.61477           0.0311765
+                   D          ENERGYBACK                   2           [0]+[1].x                   2            -2.62225           0.0314993
+                   D          ENERGYBACK                   3           [0]+[1].x                   2            -1.08993           0.0304309
+                   D          ENERGYBACK                   4           [0]+[1].x                   2             -2.7515           0.0305011
+                   D          ENERGYBACK                   5           [0]+[1].x                   2            -2.31603           0.0321192
+                   D          ENERGYBACK                   6           [0]+[1].x                   2            -2.62383           0.0327002
+                   D          ENERGYBACK                   7           [0]+[1].x                   2            -2.38139           0.0335179
+                   D          ENERGYBACK                   8           [0]+[1].x                   2            -2.67535           0.0329085
+                   D          ENERGYBACK                   9           [0]+[1].x                   2            -1.28267           0.0307855
+                   D          ENERGYBACK                  10           [0]+[1].x                   2            -2.77122           0.0319775
+                   D          ENERGYBACK                  11           [0]+[1].x                   2            -2.00633           0.0310413
+                   D          ENERGYBACK                  12           [0]+[1].x                   2            -5.25968           0.0634425
+                   D          ENERGYBACK                  13           [0]+[1].x                   2             -6.1058           0.0665485
+                   * missing STRIPB14
+                   * missing STRIPB15
+                   D         ENERGYFRONT                   0           [0]+[1].x                   2            -3.27231           0.0311625
+                   D         ENERGYFRONT                   1           [0]+[1].x                   2            -2.26669           0.0320006
+                   D         ENERGYFRONT                   2           [0]+[1].x                   2            -3.03624           0.0323563
+                   D         ENERGYFRONT                   3           [0]+[1].x                   2            -2.69585           0.0324348
+                   D         ENERGYFRONT                   4           [0]+[1].x                   2            -2.99921           0.0314109
+                   D         ENERGYFRONT                   5           [0]+[1].x                   2            -3.19761           0.0315854
+                   D         ENERGYFRONT                   6           [0]+[1].x                   2            -2.69369           0.0310703
+                   D         ENERGYFRONT                   7           [0]+[1].x                   2            -2.61244           0.0314993
+                   D         ENERGYFRONT                   8           [0]+[1].x                   2            -2.65677            0.031049
+                   D         ENERGYFRONT                   9           [0]+[1].x                   2            -3.43104           0.0326118
+                   D         ENERGYFRONT                  10           [0]+[1].x                   2            -2.95212           0.0310788
+                   D         ENERGYFRONT                  11           [0]+[1].x                   2            -3.72337           0.0326317
+                   D         ENERGYFRONT                  12           [0]+[1].x                   2             -3.1359           0.0314219
+                   D         ENERGYFRONT                  13           [0]+[1].x                   2            -2.15479            0.030997
+                   D         ENERGYFRONT                  14           [0]+[1].x                   2            -3.50233           0.0311965
+                   D         ENERGYFRONT                  15           [0]+[1].x                   2            -3.04737           0.0313372
+                   
+                   E          ENERGYBACK                   0           [0]+[1].x                   2            -2.14106           0.0258033
+                   E          ENERGYBACK                   1           [0]+[1].x                   2            -2.09299           0.0245555
+                   E          ENERGYBACK                   2           [0]+[1].x                   2            -2.22042           0.0233606
+                   E          ENERGYBACK                   3           [0]+[1].x                   2            -1.86249           0.0238796
+                   E          ENERGYBACK                   4           [0]+[1].x                   2            -1.68894           0.0248802
+                   E          ENERGYBACK                   5           [0]+[1].x                   2            -1.60313           0.0242155
+                   E          ENERGYBACK                   6           [0]+[1].x                   2            -2.38191           0.0240098
+                   E          ENERGYBACK                   7           [0]+[1].x                   2            -2.13719           0.0237761
+                   E          ENERGYBACK                   8           [0]+[1].x                   2            -2.65185           0.0235493
+                   E          ENERGYBACK                   9           [0]+[1].x                   2             -1.9904            0.023052
+                   E          ENERGYBACK                  10           [0]+[1].x                   2            -2.30646           0.0235152
+                   E          ENERGYBACK                  11           [0]+[1].x                   2            -1.87692           0.0228543
+                   E          ENERGYBACK                  12           [0]+[1].x                   2            -2.32153           0.0236434
+                   E          ENERGYBACK                  13           [0]+[1].x                   2            -2.33659           0.0240258
+                   E          ENERGYBACK                  14           [0]+[1].x                   2            -2.65597           0.0234266
+                   E          ENERGYBACK                  15           [0]+[1].x                   2            -2.66235           0.0258164
+                   E         ENERGYFRONT                   0           [0]+[1].x                   2            -3.78056           0.0336919
+                   E         ENERGYFRONT                   1           [0]+[1].x                   2            -2.57626           0.0322874
+                   E         ENERGYFRONT                   2           [0]+[1].x                   2            -3.38899           0.0330266
+                   E         ENERGYFRONT                   3           [0]+[1].x                   2            -3.23793           0.0324858
+                   E         ENERGYFRONT                   4           [0]+[1].x                   2            -3.08303           0.0334063
+                   E         ENERGYFRONT                   5           [0]+[1].x                   2            -3.34831           0.0329021
+                   E         ENERGYFRONT                   6           [0]+[1].x                   2            -3.68239           0.0322742
+                   E         ENERGYFRONT                   7           [0]+[1].x                   2            -3.28707           0.0336934
+                   E         ENERGYFRONT                   8           [0]+[1].x                   2            -2.95792           0.0332083
+                   * missing STRIPF09
+                   E         ENERGYFRONT                  10           [0]+[1].x                   2            -3.52087           0.0335735
+                   E         ENERGYFRONT                  11           [0]+[1].x                   2            -2.84229           0.0342742
+                   E         ENERGYFRONT                  12           [0]+[1].x                   2            -2.83067            0.034293
+                   E         ENERGYFRONT                  13           [0]+[1].x                   2            -2.56375           0.0334046
+                   E         ENERGYFRONT                  14           [0]+[1].x                   2            -2.95993           0.0327584
+                   E         ENERGYFRONT                  15           [0]+[1].x                   2            -2.05542           0.0324939
+                   
+                   
+                   F          ENERGYBACK                   0           [0]+[1].x                   2            -3.52809           0.0368651
+                   F          ENERGYBACK                   1           [0]+[1].x                   2            -3.49093           0.0367427
+                   F          ENERGYBACK                   2           [0]+[1].x                   2            -2.96528           0.0354668
+                   F          ENERGYBACK                   3           [0]+[1].x                   2            -2.90409           0.0363823
+                   F          ENERGYBACK                   4           [0]+[1].x                   2            -4.00391           0.0369983
+                   F          ENERGYBACK                   5           [0]+[1].x                   2            -3.87423           0.0367174
+                   F          ENERGYBACK                   6           [0]+[1].x                   2            -3.27222           0.0363697
+                   F          ENERGYBACK                   7           [0]+[1].x                   2            -2.46714            0.036218
+                   F          ENERGYBACK                   8           [0]+[1].x                   2            -3.03419           0.0365811
+                   F          ENERGYBACK                   9           [0]+[1].x                   2             -3.0507           0.0349216
+                   F          ENERGYBACK                  10           [0]+[1].x                   2            -4.44605           0.0361537
+                   F          ENERGYBACK                  11           [0]+[1].x                   2            -2.87904           0.0366992
+                   F          ENERGYBACK                  12           [0]+[1].x                   2            -4.32808           0.0366388
+                   F          ENERGYBACK                  13           [0]+[1].x                   2            -4.64052            0.036483
+                   F          ENERGYBACK                  14           [0]+[1].x                   2            -4.72543           0.0360145
+                   F          ENERGYBACK                  15           [0]+[1].x                   2            -3.23284           0.0359804
+                   F         ENERGYFRONT                   0           [0]+[1].x                   2            -4.54983           0.0369305
+                   F         ENERGYFRONT                   1           [0]+[1].x                   2            -3.47536           0.0367409
+                   F         ENERGYFRONT                   2           [0]+[1].x                   2            -4.49233           0.0364199
+                   F         ENERGYFRONT                   3           [0]+[1].x                   2            -4.46639           0.0362619
+                   F         ENERGYFRONT                   4           [0]+[1].x                   2             -3.0881           0.0354839
+                   F         ENERGYFRONT                   5           [0]+[1].x                   2            -4.24186           0.0362015
+                   F         ENERGYFRONT                   6           [0]+[1].x                   2            -5.19879           0.0347381
+                   F         ENERGYFRONT                   7           [0]+[1].x                   2            -3.29911            0.034795
+                   F         ENERGYFRONT                   8           [0]+[1].x                   2            -5.02143           0.0361589
+                   F         ENERGYFRONT                   9           [0]+[1].x                   2            -3.58282           0.0369335
+                   F         ENERGYFRONT                  10           [0]+[1].x                   2            -4.58377           0.0357591
+                   F         ENERGYFRONT                  11           [0]+[1].x                   2            -3.68206           0.0353707
+                   F         ENERGYFRONT                  12           [0]+[1].x                   2            -5.77193           0.0369803
+                   F         ENERGYFRONT                  13           [0]+[1].x                   2            -3.71228            0.036244
+                   F         ENERGYFRONT                  15           [0]+[1].x                   2            -3.93574           0.0352106
+                   
 * pads             
                    pad_A              ENERGY                   0           [0]+[1].x                   2            -3.96428           0.0553374
                    pad_B              ENERGY                   0           [0]+[1].x                   2             -2.9871           0.0544797
-
+                   pad_C              ENERGY                   0           [0]+[1].x                   2            -4.89341           0.0527691
+                   pad_D              ENERGY                   0           [0]+[1].x                   2            -5.12801           0.0551414
+                   pad_E              ENERGY                   0           [0]+[1].x                   2            -5.18089           0.0549567
+                   pad_F              ENERGY                   0           [0]+[1].x                   2            -4.09342           0.0526677
