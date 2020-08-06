@@ -3,6 +3,7 @@
 //________________________________________________
 UNIMRunInfo::UNIMRunInfo(int run_number) :
 fRunNumber(run_number),
+fDataAcquisitionName("Midas"),
 fEmptyMappingWarning(true)
 {}
 
@@ -86,6 +87,11 @@ int UNIMRunInfo::LoadRunConfiguration(const char *file_name, int run_num)
   return NRead;
 }
 
+const char * UNIMRunInfo::GetDataAcquisitionName() const
+{
+  return fDataAcquisitionName.c_str();
+}
+
 const char * UNIMRunInfo::GetName() const
 {
   return fExperimentName.c_str();
@@ -139,7 +145,9 @@ void UNIMRunInfo::ParseSetConfigLine(const char *line_to_parse)
   LineStream>>ValueToSet;
   std::string NewValue(LineToParse.substr(LineToParse.find("\"")+1,LineToParse.find_last_of("\"")-(LineToParse.find("\"")+1)));
 
-  if(ValueToSet.compare("EXPERIMENT_NAME")==0) {
+  if(ValueToSet.compare("DATA_ACQUISITION")==0) {
+    fDataAcquisitionName.assign(NewValue);
+  } else if(ValueToSet.compare("EXPERIMENT_NAME")==0) {
     fExperimentName.assign(NewValue);
   } else if (ValueToSet.compare("EXPERIMENT_TITLE")==0) {
     fExperimentTitle.assign(NewValue);

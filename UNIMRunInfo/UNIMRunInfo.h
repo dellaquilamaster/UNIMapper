@@ -15,6 +15,7 @@ public:
   int LoadSetupConfiguration(const char *);              //! Read general setup lines from configuration file of the experiment
   int LoadRunConfiguration(const char *, int);           //! Read run configuration for a specific run
 
+  const char * GetDataAcquisitionName() const;           //! Get the name of the data acquisition used for the experiment
   const char * GetName() const;                          //! Get Experiment Name
   const char * GetTitle() const;                         //! Get Experiment Title
   long GetRunNumber() const;                             //! Returns run number
@@ -28,6 +29,7 @@ public:
 
 private:
   long fRunNumber;                                       //!
+  std::string fDataAcquisitionName;                      //!
   std::string fExperimentName;                           //!
   std::string fExperimentTitle;                          //!
   std::string fUNIMapperRootFilePath;                    //!
