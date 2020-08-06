@@ -36,5 +36,5 @@ done
 
 if [ ! -z "$3" ]; then
   parallel $parallel_processes < parallel_runs.txt
-#  rm -f parallel_runs.txt
+  rm -f parallel_runs.txt
 fi

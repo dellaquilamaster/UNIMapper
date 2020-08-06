@@ -17,7 +17,7 @@ public:
 
   const char * GetName() const;                          //! Get Experiment Name
   const char * GetTitle() const;                         //! Get Experiment Title
-  int GetRunNumber() const;                              //! Returns run number
+  long GetRunNumber() const;                             //! Returns run number
   const char * GetMidasROOTFilePath() const;             //! Returns path containing Midas binary files for the run
   const char * GetMappingFile() const;                   //! Returns the path to the mapping file for the run
   const char * GetEnergyCalibrationFile() const;         //! Returns the path to the energy calibration file for the run
@@ -27,7 +27,7 @@ public:
   void SetMidasFilePath(const char *);                   //! Set path for Midas binary files of the run
 
 private:
-  int fRunNumber;                                        //!
+  long fRunNumber;                                       //!
   std::string fExperimentName;                           //!
   std::string fExperimentTitle;                          //!
   std::string fUNIMapperRootFilePath;                    //!

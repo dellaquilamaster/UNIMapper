@@ -37,7 +37,7 @@ public :
 private :
   TTree * fMappedTree;                         //! TTree with mapped data
   TFile * fFileOut;                            //! TFile for output
-  int fRunNumber;                              //! Run number to analyze
+  long fRunNumber;                             //! Run number to analyze
   UNIMCalibration * fEnergyCalibration;        //! The calibration module (energy calibration)
 
 };

@@ -20,7 +20,7 @@ int UNIMMapper::PassArguments(int argc, char** argv)
   {
     std::string Argument(argv[i]);
     if(Argument.find("--run=")!=std::string::npos) {
-      fRunNumber=std::stoi(Argument.substr(Argument.find("--run=")+6));
+      fRunNumber=std::stol(Argument.substr(Argument.find("--run=")+6));
     }
   }
 
@@ -83,7 +83,7 @@ int UNIMMapper::BuildExperimentalSetup()
 int UNIMMapper::InitRootOutput()
 {
   // Opening a new TFile for output
-  fFileOut = new TFile(Form("%srun-%04d.root", gRun->GetUNIMapperROOTFilePath(), fRunNumber), "RECREATE");
+  fFileOut = new TFile(Form("%srun-%04ld.root", gRun->GetUNIMapperROOTFilePath(), fRunNumber), "RECREATE");
   if(fFileOut->IsZombie()) return -1; //failed to open TFile
 
   // Creating output TTree
@@ -93,7 +93,7 @@ int UNIMMapper::InitRootOutput()
   //call individual detectors InitTTreeBranch
   gExpSetup->InitDetectorBranches(fMappedTree);
 
-  printf("UNIMMapper: Opened ROOT file %s\n", Form("%srun-%04d.root", gRun->GetUNIMapperROOTFilePath(), fRunNumber));
+  printf("UNIMMapper: Opened ROOT file %s\n", Form("%srun-%04ld.root", gRun->GetUNIMapperROOTFilePath(), fRunNumber));
 
   return 0;
 }
@@ -111,7 +111,7 @@ void UNIMMapper::EndMapping()
   fMappedTree->AutoSave();
   fMappedTree->GetCurrentFile()->Close();
   
-  printf("\nUNIMMapper: Produced ROOT file %s\n", Form("%srun-%04d.root", gRun->GetUNIMapperROOTFilePath(), fRunNumber));
+  printf("\nUNIMMapper: Produced ROOT file %s\n", Form("%srun-%04ld.root", gRun->GetUNIMapperROOTFilePath(), fRunNumber));
 
   return;
 }

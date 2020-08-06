@@ -45,7 +45,7 @@ int main (int argc, char ** argv)
   
 
   //Main loop UNIMRawDataReader::ProcessRawTree()
-  printf("** Mapping run %d **\n", gRun->GetRunNumber());
+  printf("** Mapping run %ld **\n", gRun->GetRunNumber());
   TheReader->ProcessRawTree();
 
 

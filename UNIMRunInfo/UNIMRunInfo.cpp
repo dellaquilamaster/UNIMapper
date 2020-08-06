@@ -96,7 +96,7 @@ const char * UNIMRunInfo::GetTitle() const
    return fExperimentTitle.c_str(); 
 }
 
-int UNIMRunInfo::GetRunNumber() const
+long UNIMRunInfo::GetRunNumber() const
 {
   return fRunNumber;  
 } 
