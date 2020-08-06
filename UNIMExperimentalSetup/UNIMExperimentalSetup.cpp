@@ -79,6 +79,11 @@ int UNIMExperimentalSetup::ParseDefineMappingLine(const char * line_to_parse)
     } if(DetectorType.compare("SiliconPad")==0) {
       UNIMSiliconPad * newDetector = new UNIMSiliconPad(DetectorName.c_str());
       (*fDetectors)[DetectorName]=newDetector;
+    } if(DetectorType.compare("SiliconHodoscope")==0) {
+      int NumPads;
+      LineStream>>NumPads;
+      UNIMSiliconHodoscope * newDetector = new UNIMSiliconHodoscope(DetectorName.c_str(), NumPads);
+      (*fDetectors)[DetectorName]=newDetector;
     }  if(DetectorType.compare("Spare")==0) {
       UNIMSpare * newDetector = new UNIMSpare(DetectorName.c_str());
       std::string quantity_to_define;

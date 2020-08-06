@@ -1,0 +1,25 @@
+** Energy calibration template for UNIMapper ***********************************
+** Written by Daniele Dell'Aquila (ddellaquila@uniss.it)
+** Short guide *****************************************************************
+**** To define a new detector: define detector DetType "name" options
+**** To map a single detector channel to a given gid channel: map DetName ChName detector="SingleDetName" gid="gidnumber" channel="ch"
+**
+** Possible DetType values: DSSSD, SSSSD, LampWedge, SiliconPad, Spare, SiliconHodoscope
+** possible options are specified below for each possible detector
+** Examples: *************************************
+** define detector DSSSD "T1" NumStrips
+** define detector SSSSD "T2" NumStrips
+** define detector LampWedge "W1" NumStrips
+** define detector SiliconPad "P1"
+** define detector SiliconHodoscope "H1" NumPads
+** define detector Spare "triggers" QUANTITY1 QUANTITY2 ... QUANTITYN
+**************************************************
+**
+** Possible values of ChName for each detector:
+** DSSSD: ENERGYBACK ENERGYFRONT TIMEFRONT TIMEBACK
+** SSSSD: ENERGY TIME
+** LampWedge: ENERGY TIME
+** SiliconPad: ENERGY TIME (for SiliconPad, in the "map" command, detector is always equal to 0)
+** SiliconHodoscope: ENERGY TIME
+** Spare: QUANTITY1 QUANTITY2 ... QUANTITYN (in the "map" command, detector is always equal to 0)
+********************************************************************************

@@ -11,6 +11,7 @@ INCLUDES  += -I$(UNIMapperSrc)detectors/UNIMDSSSD
 INCLUDES  += -I$(UNIMapperSrc)detectors/UNIMSSSSD
 INCLUDES  += -I$(UNIMapperSrc)detectors/UNIMLampWedge
 INCLUDES  += -I$(UNIMapperSrc)detectors/UNIMSiliconPad
+INCLUDES  += -I$(UNIMapperSrc)detectors/UNIMSiliconHodoscope
 INCLUDES  += -I$(UNIMapperSrc)detectors/UNIMSpare
 INCLUDES  += -I$(UNIMapperSrc)UNIMRunInfo
 INCLUDES  += -I$(UNIMapperSrc)UNIMExperimentalSetup
@@ -18,7 +19,7 @@ INCLUDES  += -I$(UNIMapperSrc)UNIMDetectorMap
 INCLUDES  += -I$(UNIMapperSrc)UNIMCalibration
 INCLUDES  += -I$(UNIMapperSrc)UNIMShared
 
-RLIBS     := -L$(UNIMapperSrc)lib -lUNIMDSSSD -lUNIMSSSSD -lUNIMLampWedge -lUNIMSiliconPad -lUNIMSpare
+RLIBS     := -L$(UNIMapperSrc)lib -lUNIMDSSSD -lUNIMSSSSD -lUNIMLampWedge -lUNIMSiliconPad -lUNIMSiliconHodoscope -lUNIMSpare
 
 CXXFLAGS  += $(INCLUDES) -std=c++11 -fPIC -O3 -Wall -Wpedantic
 

@@ -5,18 +5,19 @@ all:
 	$(MAKE) -C main  ;			$(MAKE) -C main install
 
 root:
-	$(MAKE) -C UNIMRawDataReader ;		$(MAKE) -C UNIMRawDataReader install
-	$(MAKE) -C UNIMRunInfo ;		$(MAKE) -C UNIMRunInfo install
-	$(MAKE) -C detectors/UNIMDetector ;	$(MAKE) -C detectors/UNIMDetector install
-	$(MAKE) -C detectors/UNIMDSSSD ;	$(MAKE) -C detectors/UNIMDSSSD install
-	$(MAKE) -C detectors/UNIMSSSSD ;	$(MAKE) -C detectors/UNIMSSSSD install
-	$(MAKE) -C detectors/UNIMLampWedge ;	$(MAKE) -C detectors/UNIMLampWedge install
-	$(MAKE) -C detectors/UNIMSiliconPad ;	$(MAKE) -C detectors/UNIMSiliconPad install
-	$(MAKE) -C detectors/UNIMSpare ;	$(MAKE) -C detectors/UNIMSpare install
-	$(MAKE) -C UNIMExperimentalSetup ;	$(MAKE) -C UNIMExperimentalSetup install
-	$(MAKE) -C UNIMDetectorMap ;		$(MAKE) -C UNIMDetectorMap install
-	$(MAKE) -C UNIMCalibration ;		$(MAKE) -C UNIMCalibration install
-	$(MAKE) -C UNIMShared ;			$(MAKE) -C UNIMShared install
+	$(MAKE) -C UNIMRawDataReader ;			$(MAKE) -C UNIMRawDataReader install
+	$(MAKE) -C UNIMRunInfo ;			$(MAKE) -C UNIMRunInfo install
+	$(MAKE) -C detectors/UNIMDetector ;		$(MAKE) -C detectors/UNIMDetector install
+	$(MAKE) -C detectors/UNIMDSSSD ;		$(MAKE) -C detectors/UNIMDSSSD install
+	$(MAKE) -C detectors/UNIMSSSSD ;		$(MAKE) -C detectors/UNIMSSSSD install
+	$(MAKE) -C detectors/UNIMLampWedge ;		$(MAKE) -C detectors/UNIMLampWedge install
+	$(MAKE) -C detectors/UNIMSiliconPad ;		$(MAKE) -C detectors/UNIMSiliconPad install
+	$(MAKE) -C detectors/UNIMSiliconHodoscope ;	$(MAKE) -C detectors/UNIMSiliconHodoscope install
+	$(MAKE) -C detectors/UNIMSpare ;		$(MAKE) -C detectors/UNIMSpare install
+	$(MAKE) -C UNIMExperimentalSetup ;		$(MAKE) -C UNIMExperimentalSetup install
+	$(MAKE) -C UNIMDetectorMap ;			$(MAKE) -C UNIMDetectorMap install
+	$(MAKE) -C UNIMCalibration ;			$(MAKE) -C UNIMCalibration install
+	$(MAKE) -C UNIMShared ;				$(MAKE) -C UNIMShared install
 
 install:
 	$(MAKE) -C UNIMRawDataReader install
@@ -26,6 +27,7 @@ install:
 	$(MAKE) -C detectors/UNIMSSSSD install
 	$(MAKE) -C detectors/UNIMLampWedge install
 	$(MAKE) -C detectors/UNIMSiliconPad install
+	$(MAKE) -C detectors/UNIMSiliconHodoscope install
 	$(MAKE) -C detectors/UNIMSpare install
 	$(MAKE) -C UNIMExperimentalSetup install
 	$(MAKE) -C UNIMDetectorMap install
@@ -40,6 +42,7 @@ distclean:
 	$(MAKE) -C detectors/UNIMSSSSD distclean
 	$(MAKE) -C detectors/UNIMLampWedge distclean
 	$(MAKE) -C detectors/UNIMSiliconPad distclean
+	$(MAKE) -C detectors/UNIMSiliconHodoscope distclean
 	$(MAKE) -C detectors/UNIMSpare distclean
 	$(MAKE) -C UNIMExperimentalSetup distclean
 	$(MAKE) -C UNIMDetectorMap distclean
@@ -56,6 +59,7 @@ clean:
 	$(MAKE) -C detectors/UNIMSSSSD clean
 	$(MAKE) -C detectors/UNIMLampWedge clean
 	$(MAKE) -C detectors/UNIMSiliconPad clean
+	$(MAKE) -C detectors/UNIMSiliconHodoscope clean
 	$(MAKE) -C detectors/UNIMSpare clean
 	$(MAKE) -C UNIMExperimentalSetup clean
 	$(MAKE) -C UNIMDetectorMap clean

@@ -13,6 +13,7 @@
 #include <UNIMSSSSD.h>
 #include <UNIMLampWedge.h>
 #include <UNIMSiliconPad.h>
+#include <UNIMSiliconHodoscope.h>
 #include <UNIMSpare.h>
 #include <UNIMDetectorMap.h>
 #include <UNIMRunInfo.h>

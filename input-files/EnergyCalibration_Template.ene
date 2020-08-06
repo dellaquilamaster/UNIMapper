@@ -1,0 +1,12 @@
+** Energy calibration template for UNIMapper ***********************************
+** Written by Daniele Dell'Aquila (ddellaquila@uniss.it)
+** Short guide *****************************************************************
+**** To give the energy calibration to a given detector unit, follow the template 
+****
+*            detector            quantity                unit             formula      num_parameters  the parameters ...
+****
+**** where:
+**** detector = name of the detector as in the mapping file
+**** quantity = what to calibrate (ENERGY, ENERGYFRONT, ENERGYBACK, ...)
+**** formula = formula used for calibration with "." instead of "*"
+****
