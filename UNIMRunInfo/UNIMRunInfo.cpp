@@ -1,7 +1,7 @@
 #include <UNIMRunInfo.h>
 
 //________________________________________________
-UNIMRunInfo::UNIMRunInfo(int run_number) :
+UNIMRunInfo::UNIMRunInfo(long run_number) :
 fRunNumber(run_number),
 fDataAcquisitionName("Midas"),
 fEmptyMappingWarning(true)
@@ -57,7 +57,7 @@ int UNIMRunInfo::LoadSetupConfiguration(const char *file_name)
 }
 
 //________________________________________________
-int UNIMRunInfo::LoadRunConfiguration(const char *file_name, int run_num)
+int UNIMRunInfo::LoadRunConfiguration(const char *file_name, long run_num)
 {
   std::ifstream FileIn(file_name);
   if(!FileIn.is_open()) {
@@ -167,7 +167,7 @@ void UNIMRunInfo::ParseSetConfigLine(const char *line_to_parse)
 }
 
 //________________________________________________
-void UNIMRunInfo::ParseSetConfigLineRunInfo(const char *line_to_parse, int run_num)
+void UNIMRunInfo::ParseSetConfigLineRunInfo(const char *line_to_parse, long run_num)
 {
   std::string LineToParse(line_to_parse);
 
@@ -192,7 +192,7 @@ void UNIMRunInfo::ParseSetConfigLineRunInfo(const char *line_to_parse, int run_n
       if(Option.find(",")!=std::string::npos) {
         std::string RunToInclude;
         while(std::getline(LineRunStream, RunToInclude, ',')) {
-          if(run_num==std::stoi(RunToInclude)) RunFound=true;
+          if(run_num==std::stol(RunToInclude)) RunFound=true;
         }
       }
       if(Option.find("-")!=std::string::npos) {
@@ -200,12 +200,12 @@ void UNIMRunInfo::ParseSetConfigLineRunInfo(const char *line_to_parse, int run_n
         std::string StopRun;
         std::getline(LineRunStream, StartRun, '-');
         std::getline(LineRunStream, StopRun, '-');
-        int StartRunNum=std::stoi(StartRun);
-        int StopRunNum=std::stoi(StopRun);
+        long StartRunNum=std::stol(StartRun);
+        long StopRunNum=std::stol(StopRun);
         if(run_num>=StartRunNum && run_num<=StopRunNum) RunFound=true;
       }
       if(Option.find(",")==std::string::npos && Option.find("-")==std::string::npos && !Option.empty()) {
-        if(run_num==std::stoi(Option)) RunFound=true;
+        if(run_num==std::stol(Option)) RunFound=true;
       }
     } else if (Option.find("--exclude=")!=std::string::npos) {
         Option.assign(Option.substr(Option.find("--exclude=")+10));
@@ -213,7 +213,7 @@ void UNIMRunInfo::ParseSetConfigLineRunInfo(const char *line_to_parse, int run_n
         if(Option.find(",")!=std::string::npos) {
           std::string RunToExclude;
           while(std::getline(LineExcludeStream, RunToExclude, ',')) {
-            if(run_num==std::stoi(RunToExclude)) return; //this run is excluded
+            if(run_num==std::stol(RunToExclude)) return; //this run is excluded
           }
         }
         if(Option.find("-")!=std::string::npos) {
@@ -221,12 +221,12 @@ void UNIMRunInfo::ParseSetConfigLineRunInfo(const char *line_to_parse, int run_n
           std::string StopRun;
           std::getline(LineExcludeStream, StartRun, '-');
           std::getline(LineExcludeStream, StopRun, '-');
-          int StartRunNum=std::stoi(StartRun);
-          int StopRunNum=std::stoi(StopRun);
+          long StartRunNum=std::stol(StartRun);
+          long StopRunNum=std::stol(StopRun);
           if(run_num>=StartRunNum && run_num<=StopRunNum) return; //this run belong to a bunch of runs to be excluded
         }
         if(Option.find(",")==std::string::npos && Option.find("-")==std::string::npos && !Option.empty()) {
-          if(run_num==std::stoi(Option)) return;
+          if(run_num==std::stol(Option)) return;
         }
       }
   }

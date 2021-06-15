@@ -7,13 +7,13 @@
 class UNIMRunInfo
 {
 public:
-  UNIMRunInfo(int run_number);                           //! Constructor
+  UNIMRunInfo(long run_number);                          //! Constructor
   ~UNIMRunInfo();                                        //! Destructor
   
   int InitClass(const char *);                           //! Class initializer called by UNIMMapper::InitializeMapper
   
   int LoadSetupConfiguration(const char *);              //! Read general setup lines from configuration file of the experiment
-  int LoadRunConfiguration(const char *, int);           //! Read run configuration for a specific run
+  int LoadRunConfiguration(const char *, long);          //! Read run configuration for a specific run
 
   const char * GetDataAcquisitionName() const;           //! Get the name of the data acquisition used for the experiment
   const char * GetName() const;                          //! Get Experiment Name
@@ -39,7 +39,7 @@ private:
   bool fEmptyMappingWarning;                             //!
   
   void ParseSetConfigLine(const char *);                 //! Parse a "set" line in the configuration file
-  void ParseSetConfigLineRunInfo(const char *, int );    //! Parse a "set" line of a run-by-run instruction
+  void ParseSetConfigLineRunInfo(const char *, long );   //! Parse a "set" line of a run-by-run instruction
 };
 
 #endif
