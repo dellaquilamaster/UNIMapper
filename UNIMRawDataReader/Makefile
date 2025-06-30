@@ -20,8 +20,9 @@ INCLUDES  += -I$(UNIMapperSrc)UNIMExperimentalSetup
 INCLUDES  += -I$(UNIMapperSrc)UNIMDetectorMap
 INCLUDES  += -I$(UNIMapperSrc)UNIMCalibration
 INCLUDES  += -I$(UNIMapperSrc)UNIMShared
+INCLUDES  += -I$(UNIMapperSrc)UNIMMapper
 
-RLIBS     := -L$(UNIMapperSrc)lib
+RLIBS     := -L$(UNIMapperSrc)lib -lUNIMShared -lUNIMRunInfo -lUNIMMapper
 
 CXXFLAGS  += $(INCLUDES) -std=c++11 -fPIC -O3 -Wall -Wpedantic
 

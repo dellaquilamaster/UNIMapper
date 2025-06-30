@@ -11,8 +11,6 @@ while IFS= read -r line;do
     fi
 done < config/UNIMapper.conf
 
-echo $DATA_PATH
-
 first_run=$1
 
 if [ -z "$2" ]; then
@@ -31,9 +29,8 @@ fi
 
 for file_name in $(ls ${DATA_PATH});
 do
-  
-  run_name=$(echo $file_name | grep -o -P '(?<=run_).*(?=.root)')
-  
+  run_name=$(echo $file_name | grep -oP '(?<=run_).*?(?=.root)')
+    
   re='^[0-9]+$'
 
   if ! [[ ${run_name} =~ $re ]] ; then
@@ -55,7 +52,6 @@ do
     
     fi
 done
-
 if [ ! -z "$3" ]; then
   parallel $parallel_processes < parallel_runs.txt
   rm -f parallel_runs.txt

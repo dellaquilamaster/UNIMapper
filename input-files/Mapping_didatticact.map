@@ -23,3 +23,26 @@
 ** SiliconHodoscope: ENERGY TIME
 ** Spare: QUANTITY1 QUANTITY2 ... QUANTITYN (in the "map" command, detector is always equal to 0)
 ********************************************************************************
+define detector SiliconPad "E30"
+define detector SiliconPad "E50"
+define detector SiliconPad "E130"
+define detector SiliconPad "E150"
+define detector SiliconPad "E160"
+define detector SiliconPad "E140"
+define detector SiliconPad "E120"
+define detector SiliconPad "E60"
+define detector SiliconPad "E40"
+define detector SiliconPad "E70"
+define detector SiliconPad "DE40"
+
+map E30 ENERGY detector="0" gid="1" channel="0"
+map E50 ENERGY detector="0" gid="1" channel="1"
+map E70 ENERGY detector="0" gid="1" channel="2"
+map E130 ENERGY detector="0" gid="1" channel="3"
+map E150 ENERGY detector="0" gid="1" channel="4"
+map E160 ENERGY detector="0" gid="1" channel="18"
+map E140 ENERGY detector="0" gid="1" channel="6"
+map E120 ENERGY detector="0" gid="1" channel="7"
+map E60 ENERGY detector="0" gid="1" channel="8"
+map E40 ENERGY detector="0" gid="1" channel="17"
+map DE40 ENERGY detector="0" gid="1" channel="16"

@@ -2,6 +2,7 @@
 #define UNIMRAWDATAREADER_H
 
 #include <iostream>
+#include <iomanip>
 #include <UNIMShared.h>
 #include <UNIMMapper.h>
 #include <TTreeReader.h>

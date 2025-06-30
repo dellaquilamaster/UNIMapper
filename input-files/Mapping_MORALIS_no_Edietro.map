@@ -23,3 +23,14 @@
 ** SiliconHodoscope: ENERGY TIME
 ** Spare: QUANTITY1 QUANTITY2 ... QUANTITYN (in the "map" command, detector is always equal to 0)
 ********************************************************************************
+define detector SiliconPad "DEdietro"
+define detector SiliconPad "Edietro"
+define detector SiliconPad "DEdavanti"
+define detector SiliconPad "Edavanti"
+
+map DEdietro ENERGY detector="0" gid="1" channel="2"
+map DEdietro TIME detector="0" gid="2" channel="0"
+map DEdavanti ENERGY detector="0" gid="1" channel="0"
+map DEdavanti TIME detector="0" gid="2" channel="1"
+map Edavanti ENERGY detector="0" gid="1" channel="1"
+map Edavanti TIME detector="0" gid="2" channel="2"

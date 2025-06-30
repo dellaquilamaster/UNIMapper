@@ -1,13 +1,11 @@
 CFLAGS    :=`root-config --cflags --libs`
 
-PROG      :=exec_UNIMapper.exe
-
 DllSuf    := so
 SrcSuf    := cpp
 ObjSuf    := o
 
 INCLUDES  := -I$(UNIMapperSrc)
-INCLUDES  += -I$(UNIMapperSrc)main
+INCLUDES  += -I$(UNIMapperSrc)detectors/UNIMDetector
 INCLUDES  += -I$(UNIMapperSrc)UNIMRawDataReader
 INCLUDES  += -I$(UNIMapperSrc)detectors/UNIMDetector
 INCLUDES  += -I$(UNIMapperSrc)detectors/UNIMDSSSD
@@ -23,37 +21,39 @@ INCLUDES  += -I$(UNIMapperSrc)UNIMCalibration
 INCLUDES  += -I$(UNIMapperSrc)UNIMShared
 INCLUDES  += -I$(UNIMapperSrc)UNIMMapper
 
-RLIBS     := -L$(UNIMapperSrc)lib -lUNIMRawDataReader -lUNIMDetector -lUNIMDSSSD -lUNIMSSSSD -lUNIMLampWedge -lUNIMSiliconPad -lUNIMSiliconHodoscope -lUNIMSpare -lUNIMRunInfo -lUNIMDetectorMap -lUNIMExperimentalSetup -lUNIMCalibration -lUNIMShared -lUNIMMapper
-
-SRCS = $(wildcard *.$(SrcSuf))
-OBJS = $(patsubst %.$(SrcSuf), %.$(ObjSuf), $(SRCS))
+RLIBS     := -L$(UNIMapperSrc)lib -lUNIMShared -lUNIMRunInfo -lUNIMCalibration -lUNIMDetectorMap -lUNIMExperimentalSetup
 
 CXXFLAGS  += $(INCLUDES) -std=c++11 -fPIC -O3 -Wall -Wpedantic
+
+UNIMSHARED_LIB := libUNIMMapper.$(DllSuf)
+SRCS = $(wildcard *.$(SrcSuf))
+OBJS = $(patsubst %.$(SrcSuf), %.$(ObjSuf), $(SRCS))
 
 .$(SrcSuf).$(ObjSuf):
 	@$(CXX) $(CXXFLAGS) -c $< $(SYSLIB) $(CFLAGS)
 	@echo "$(CXX) $(CXXFLAGS) -c $< $(SYSLIB) $(CFLAGS)"
 
-.PHONEY : all build
+all: $(UNIMSHARED_LIB)
+
 .SUFFIXES: .$(SrcSuf) .$(ObjSuf) .$(DllSuf)
 
-all : build
-
-build : $(PROG)
-
-$(PROG) : $(OBJS)
-	$(CXX) $(CXXFLAGS) $(OBJS) -o $@ $(CFLAGS) $(RLIBS)
+$(UNIMSHARED_LIB): $(OBJS)
+	@$(CXX) $(CXXFLAGS) -shared -o $@ $^ $(CFLAGS) $(RLIBS)
+	@echo "$(CXX) $(CXXFLAGS) -shared -o $@ $^ $(CFLAGS) $(RLIBS)"
 
 install:
-	@cp $(PROG) $(UNIMapperSrc)/$(PROG)
-
-.PHONY: clean
-clean :
-	rm -f $(OBJS) $(PROG)
+	@echo "cp $(UNIMSHARED_LIB) $(UNIMapperSrc)lib/."
+	@cp $(UNIMSHARED_LIB) $(UNIMapperSrc)lib/.
 
 .PHONY: distclean
-distclean: clean
-	@rm -f $(UNIMapperSrc)/$(PROG)
+distclean:
+	@rm -f $(UNIMSHARED_LIB) $(OBJS)
+	@rm -f $(UNIMapperSrc)lib/$(UNIMSHARED_LIB)
+
+.PHONY: clean
+clean:
+	@$(RM) -f $(UNIMSHARED_LIB) $(OBJS)
+	@$(RM) -f *.expand
 
 .PHONY: lint
 lint:

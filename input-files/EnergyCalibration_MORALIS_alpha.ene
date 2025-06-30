@@ -1,0 +1,3 @@
+*            detector            quantity                unit             formula      num_parameters  the parameters ...
+            DEdietro              ENERGY                   0           [0]+[1].x                   2            -0.11799          0.00295932
+             Edietro              ENERGY                   0           [0]+[1].x                   2          -0.0566452          0.00227348

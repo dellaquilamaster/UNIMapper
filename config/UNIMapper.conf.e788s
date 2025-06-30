@@ -1,0 +1,30 @@
+***** Configuration file for UNIMapper *****
+* For any question please refer to Daniele Dell'Aquila (daniele.dellaquila@irb.hr)
+***** version 1.0 ************************
+
+** Location of UNIMapper folders ***************************
+set UNIMAPPER_SUMMARY_PATH "/media/dellaquila/Seagate_SAS/analysis/2020_GANIL_E788S/calibrated/"
+set UNIMAPPER_ROOT_FILE_PATH "/media/dellaquila/Seagate_SAS/analysis/2020_GANIL_E788S/calibrated/"
+set EMPTY_MAPPING_WARNING false
+**********************************************************
+
+** General experiment setup ******************************
+set DATA_ACQUISITION "Midas"
+set EXPERIMENT_NAME "E788S"
+set EXPERIMENT_TITLE "17Ne epxeriment at GANIL (2020)"
+set MIDAS_ROOT_FILE_PATH "/media/dellaquila/Seagate_SAS/analysis/2020_GANIL_E788S/unpacked/"
+**********************************************************
+
+** Define different evt file path for group of runs ******
+*set MIDAS_ROOT_FILE_PATH --run=0-300 "/media/dellaquila/Seagate_SAS/analysis/2020_GANIL_E788S/unpacked/"
+**********************************************************
+
+** Channel mapping ***************************************
+set CHANNEL_MAPPING --run=0-300 "/home/dellaquila/Dropbox/Ricerca/Ruder_Boskovic/software/UNIMapper/input-files/Mapping_E788S.map"
+**********************************************************
+
+** Energy Calibrations ***********************************
+set ENERGY_CALIBRATION --run=168-213 "/home/dellaquila/Dropbox/Ricerca/Ruder_Boskovic/software/UNIMapper/input-files/EnergyCalibration_E788S_Runs168-213.ene"
+set ENERGY_CALIBRATION --run=218-218 "/home/dellaquila/Dropbox/Ricerca/Ruder_Boskovic/software/UNIMapper/input-files/EnergyCalibration_E788S_Run218.ene"
+set ENERGY_CALIBRATION --run=219-258 "/home/dellaquila/Dropbox/Ricerca/Ruder_Boskovic/software/UNIMapper/input-files/EnergyCalibration_E788S_AlphaParticles.ene"
+**********************************************************
